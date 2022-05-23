@@ -1,0 +1,69 @@
+﻿@model Cineplus_DSW_Proyecto.Models.Cliente
+
+@{
+    ViewData["Title"] = "editar";
+}
+
+
+
+<div class="row">
+    <div class="col-3 mt-2">
+
+        <h2>Cliente</h2>
+        <hr />
+
+        <form asp-action="editar">
+            <input asp-for="id" class="form-control" type="hidden" />
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefono" class="control-label"></label>
+                <input asp-for="telefono" class="form-control" />
+                <span asp-validation-for="telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion" class="control-label"></label>
+                <input asp-for="direccion" class="form-control" />
+                <span asp-validation-for="direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estado" class="control-label"></label>
+                @*<input class="form-control" asp-for="estado" />*@
+                <select asp-for="estado" class="form-control">
+                    <option selected value="B">[Seleccionar]</option>
+                    <option value="A">Activo</option>
+                    <option value="I">Inactivo</option>
+                </select>
+                <span asp-validation-for="estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" style="font-weight:bold;" class="btn btn-primary" />
+            </div>
+        </form>
+        @if (@ViewBag.mensaje != null)
+        {   
+        <div class="alert alert-primary" role="alert">@ViewBag.mensaje</div>
+        }
+    </div>
+
+    <div class="col-9">
+        <h1>Mantenimiento de Clientes <span class="badge badge-pill badge-secondary">@ViewBag.cantidadClientes</span></h1>
+        @Html.Partial("_listado",(IEnumerable<Cineplus_DSW_Proyecto.Models.Cliente>) @ViewBag.clientes)
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
