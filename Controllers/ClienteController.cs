@@ -7,7 +7,12 @@ namespace Cineplus_DSW_Proyecto.Controllers
 {
     public class ClienteController : Controller
     {
+        #region Acceso a Datos
+
         ClienteAccess clienteAccess = new ClienteAccess();
+        #endregion
+
+        #region Acciones
 
         [HttpGet]
         public IActionResult crear()
@@ -61,5 +66,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
             }
             return View(cliente);
         }
+        #endregion
     }
 }

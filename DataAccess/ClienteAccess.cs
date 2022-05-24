@@ -11,6 +11,8 @@ namespace Cineplus_DSW_Proyecto.DataAccess
 {
     public class ClienteAccess
     {
+        #region Conexion
+
         public string conn = string.Empty;
         public ClienteAccess()
         {
@@ -19,6 +21,7 @@ namespace Cineplus_DSW_Proyecto.DataAccess
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
 
         #region Métodos de Acceso
 
