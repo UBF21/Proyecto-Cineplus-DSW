@@ -52,7 +52,7 @@
         </form>
     </div>
     <div class="col-9">
-        <h1>Mantenimiento de Peliculas <span class="badge badge-pill badge-secondary">@ViewBag.peliculasCantidad</span></h1>
+        <h1>Mantenimiento de Peliculas <span class="badge badge-pill badge-primary">@ViewBag.peliculasCantidad</span></h1>
         @await Html.PartialAsync("_listadoPelicula",(IEnumerable<Cineplus_DSW_Proyecto.Models.Pelicula>) @ViewBag.peliculas)
     </div>
 </div>
