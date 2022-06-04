@@ -128,3 +128,6 @@ C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Deb
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_listado.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Cliente\crear.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Cliente\editar.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_listadoProveedor.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Proveedor\crear.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Proveedor\editar.cshtml.g.cs

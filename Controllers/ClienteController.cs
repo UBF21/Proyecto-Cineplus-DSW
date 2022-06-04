@@ -62,8 +62,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
                 ViewBag.clientes = clienteAccess.listar();
                 ViewBag.cantidadClientes = clienteAccess.listar().Count();
                 clienteAccess.editar(cliente);
-                return RedirectToAction("editar");
+                return RedirectToAction("crear");
             }
+
             return View(cliente);
         }
         #endregion
