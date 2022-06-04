@@ -128,6 +128,12 @@ C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Deb
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_listado.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Cliente\crear.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Cliente\editar.cshtml.g.cs
+<<<<<<< HEAD
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_listadoComestible.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Comestible\crear.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Comestible\editar.cshtml.g.cs
+=======
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_listadoUsuario.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Usuario\crear.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Usuario\editar.cshtml.g.cs
+>>>>>>> modulo1_marco

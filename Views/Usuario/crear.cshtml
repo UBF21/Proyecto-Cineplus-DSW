@@ -1,0 +1,77 @@
+﻿@model Cineplus_DSW_Proyecto.Models.Usuario
+
+@{
+    ViewData["Title"] = "crear";
+}
+
+
+
+
+<div class="row">
+    <div class="col-3 mt-2">
+        <h2>Usuario</h2>
+        <form asp-action="crear" asp-controller="Usuario" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idUsuario" class="control-label"></label>
+                <input asp-for="idUsuario" class="form-control" placeholder="A00000" />
+                <span asp-validation-for="idUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" placeholder="Nombre...."/>
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefono" class="control-label"></label>
+                <input asp-for="telefono" class="form-control" placeholder="Teléfono...."/>
+                <span asp-validation-for="telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion" class="control-label"></label>
+                <input asp-for="direccion" class="form-control" placeholder="Dirección...."/>
+                <span asp-validation-for="direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tipoUsuario" class="control-label"></label>
+                <select asp-for="tipoUsuario" asp-items="@ViewBag.tipoUsuarios" class="form-control"></select>
+                <span asp-validation-for="tipoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" placeholder="example@gmail.com"/>
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" type="password" placeholder="*******"/>
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estado" class="control-label"></label>
+                <select asp-for="estado" class="form-control">
+                    <option selected value="B">[Seleccionar]</option>
+                    <option value="A">Activo</option>
+                    <option value="I">Inactivo</option>
+                </select>
+                <span asp-validation-for="estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" style="font-weight:bold;" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-9">
+        <h1>Mantenimiento de Usuarios <span class="badge badge-pill badge-primary">@ViewBag.cantidadUsuarios</span> </h1>
+        @await Html.PartialAsync("_listadoUsuario",(IEnumerable<Cineplus_DSW_Proyecto.Models.Usuario>) @ViewBag.usuarios)
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
