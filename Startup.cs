@@ -50,7 +50,7 @@ namespace Cineplus_DSW_Proyecto
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Pelicula}/{action=crear}/{id?}");
             });
         }
     }

@@ -1,0 +1,65 @@
+﻿@model Cineplus_DSW_Proyecto.Models.Pelicula
+
+@{
+    ViewData["Title"] = "crear";
+}
+
+
+<div class="row mt-2">
+    <div class="col-3 mt-2">
+        <h2>Película</h2>
+        <form asp-action="crear" asp-controller="Pelicula" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="codPelicula" class="control-label"></label>
+                <input asp-for="codPelicula" class="form-control" placeholder="P0000"/>
+                <span asp-validation-for="codPelicula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" placeholder="Nombre..." />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tipoPelicula" class="control-label"></label>
+               <select asp-for="tipoPelicula" asp-items="@ViewBag.tipoPeliculas" class="form-control" ></select>
+                <span asp-validation-for="tipoPelicula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaEstreno" class="control-label"></label>
+                <input asp-for="fechaEstreno" class="form-control" />
+                <span asp-validation-for="fechaEstreno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaFinal" class="control-label"></label>
+                <input asp-for="fechaFinal" class="form-control" />
+                <span asp-validation-for="fechaFinal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estado" class="control-label"></label>
+                <select asp-for="estado" class="form-control">
+                    <option selected value="B">[Seleccionar]</option>
+                    <option value="A">Activo</option>
+                    <option value="I">Inactivo</option>
+                </select>
+                <span asp-validation-for="estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" style="font-weight:bold;" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+    <div class="col-9">
+        <h1>Mantenimiento de Peliculas <span class="badge badge-pill badge-primary">@ViewBag.peliculasCantidad</span></h1>
+        @await Html.PartialAsync("_listadoPelicula",(IEnumerable<Cineplus_DSW_Proyecto.Models.Pelicula>) @ViewBag.peliculas)
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
