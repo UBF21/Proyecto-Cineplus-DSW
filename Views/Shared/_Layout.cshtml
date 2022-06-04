@@ -7,32 +7,89 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-	integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cineplus_DSW_Proyecto</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" style="font-weight: bold;">CINEPLUS</a>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav navbar-nav">
+                        <!--Dropdow de Mantenimientos-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Mantenimientos</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="crear">Mantenimiento Clientes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="crear">Mantenimiento Usuarios</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Pelicula" asp-action="crear">Mantenimiento Películas</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Comestible" asp-action="crear">Mantenimiento Comestibles</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="crear">Mantenimiento Proveedores</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <!--Dropdow de Reportes-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Reportes</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="RPCliente" asp-action="reporte">Reporte Clientes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="RPVenta" asp-action="reporte">Reporte Ventas</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="RPBoleta" asp-action="reporte">Boleta</a>
+                            </div>
                         </li>
+
                     </ul>
                 </div>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fas fa-user" style="font-weight: bold;"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item" style="margin-left: 5px">
+                        <a href="#" class="btn btn-dark" aria-pressed="true" style="color: white;font-weight: bold;">  Close</a>
+                    </li>
+                </ul>
             </div>
         </nav>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Perfil de Usuario <i class="fas fa-user" style="font-weight: bold;color:black"></i></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <h3>Nombre:     <span class="badge bg-info text-light">-----------</span></h3>
+                            <h3>Email :     <span class="badge bg-info text-light">-----------</span></h3>
+                            <h3>Dirección :  <span class="badge bg-info text-light">-----------</span></h3>
+                            <h3>Teléfono  :  <span class="badge bg-info text-light">-----------</span></h3>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </header>
+
     <div class="container mt-4">
         <main role="main" class="pb-3">
             @RenderBody()
