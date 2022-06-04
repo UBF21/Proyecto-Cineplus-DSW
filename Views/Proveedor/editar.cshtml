@@ -1,0 +1,47 @@
+﻿@model Cineplus_DSW_Proyecto.Models.Proveedor
+
+@{
+    ViewData["Title"] = "editar";
+}
+
+
+<div class="row">
+    <div class="col-3 mt-2">
+        <h2>Proveedor</h2>
+        <form asp-action="editar" asp-controller="Proveedor" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="idProveedor" class="form-control" type="hidden" />
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" placeholder="Nombre...."/>
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefono" class="control-label"></label>
+                <input asp-for="telefono" class="form-control" placeholder="Teléfono...."/>
+                <span asp-validation-for="telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion" class="control-label"></label>
+                <input asp-for="direccion" class="form-control" placeholder="Dirección...."/>
+                <span asp-validation-for="direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" style="font-weight:bold;" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-9">
+        <h1>Mantenimiento de Proveedores <span class="badge badge-pill badge-primary">@ViewBag.cantidadProveedores</span> </h1>
+        @await Html.PartialAsync("_listadoProveedor",(IEnumerable<Cineplus_DSW_Proyecto.Models.Proveedor>) @ViewBag.proveedores)
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
