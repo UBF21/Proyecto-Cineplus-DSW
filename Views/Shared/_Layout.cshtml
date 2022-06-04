@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#" style="font-weight: bold;">CINEPLUS</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Presentacion" asp-action="presentacion" style="font-weight: bold;">CINEPLUS</a>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav navbar-nav">
                         <!--Dropdow de Mantenimientos-->
@@ -96,11 +96,14 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Cineplus_DSW_Proyecto - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top  bg-light  footer text-muted">
+         <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(245, 238, 238, 0.2);">
+          © 2020 Copyright
         </div>
+        <!-- Copyright -->
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
