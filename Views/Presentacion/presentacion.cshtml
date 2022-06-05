@@ -1,32 +1,34 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "presentacion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
- <div class="row align-items-center vh-100s">
-            <div class="col-lg-11 mx-auto ">
-                <div class="p-5 rounded shadow">
-                    	
-                        <h1 class="display-4" style="font-size: 2.6rem;">!Bienvenido <i></i>, al Sistema CinePlus!</h1>
-                        <p class="lead">Este Sistema Tiene como fin la gestión de una empresa de Cine.</p>
-                        <hr class="my-4">
-                        <p>Este Sistema esta de Desarrollo,por ende, esta en constante Actualización.</p>
-                        <p>Este Sistema Tiene las Funciones:</p>
-                        <br>
-                        <ul class="list-group col-lg-4">
-                            <li class="list-group-item list-group-item-action active">Mantenimiento de  Clientes</li>
-                            <li class="list-group-item ">Mantenimiento de Usuarios</li>
-                            <li class="list-group-item list-group-item-action active">Mantenimiento de Comestibles</li>
-                            <li class="list-group-item ">Mantenimiento Peliculas</li>
-                            <li class="list-group-item list-group-item-action active">Mantenimiento de Proveedores</li>
-                            <li class="list-group-item ">Reporte de ventas</li>
-                            <li class="list-group-item list-group-item-action active">Reporte de Clientes</li>
-                            <li class="list-group-item ">Reporte de Boleta</li>
-                            
-                          </ul>
-             
-                </div>
-            </div>
+
+<div class="row align-items-center vh-100s">
+    <div class="col-lg-11 mx-auto ">
+        <div class="p-5 rounded shadow">
+
+            <h1 class="display-4" style="font-size: 2.6rem;">!Bienvenido <i>@ViewBag.usuario</i>, al Sistema CinePlus!</h1>
+            <p class="lead">Este Sistema Tiene como fin la gestión de una empresa de Cine.</p>
+            <hr class="my-4">
+            <p>Este Sistema esta de Desarrollo,por ende, esta en constante Actualización.</p>
+            <p>Este Sistema Tiene las Funciones:</p>
+            <br>
+            <ul class="list-group col-lg-4">
+                <li class="list-group-item list-group-item-action active">Mantenimiento de  Clientes</li>
+                <li class="list-group-item ">Mantenimiento de Usuarios</li>
+                <li class="list-group-item list-group-item-action active">Mantenimiento de Comestibles</li>
+                <li class="list-group-item ">Mantenimiento Peliculas</li>
+                <li class="list-group-item list-group-item-action active">Mantenimiento de Proveedores</li>
+                <li class="list-group-item ">Reporte de ventas</li>
+                <li class="list-group-item list-group-item-action active">Reporte de Clientes</li>
+                <li class="list-group-item ">Reporte de Boleta</li>
+
+
+            </ul>
+
+
         </div>
+    </div>
+</div>
 

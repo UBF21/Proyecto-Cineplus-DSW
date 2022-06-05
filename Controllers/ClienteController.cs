@@ -2,9 +2,11 @@
 using Cineplus_DSW_Proyecto.DataAccess;
 using Cineplus_DSW_Proyecto.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
+    [Authorize]
     public class ClienteController : Controller
     {
         #region Acceso a Datos
