@@ -123,6 +123,12 @@ namespace Cineplus_DSW_Proyecto.DataAccess
             return cliente;
         }
 
+        public IEnumerable<Cliente> filtrarPorEstado(string estado)
+        {
+            List<Cliente> listado = listar().Where((item) => item.estado.Equals(estado)).ToList();
+
+            return listado;
+        }
         #endregion
     }
 }

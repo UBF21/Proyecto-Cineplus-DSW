@@ -142,3 +142,13 @@ C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Deb
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Cineplus_DSW_Proyecto.genruntimeconfig.cache
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Presentacion\presentacion.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Login\login.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\RPBoleta\reporte.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\RPCliente\reporte.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\bin\Debug\netcoreapp3.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\bin\Debug\netcoreapp3.0\Rotativa.AspNetCore.dll
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Cineplus_DSW_Proyecto.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\RPVenta\reporte.cshtml.g.cs
