@@ -1,3 +1,5 @@
+using Cineplus_DSW_Proyecto.Repository.IModel;
+using Cineplus_DSW_Proyecto.Repository.Implents;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +27,18 @@ namespace Cineplus_DSW_Proyecto
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<ICliente,ClienteRepository>();
+            services.AddSingleton<IComestible,ComestibleRepository>();
+            services.AddSingleton<ITipoComestible, TipoComestibleRepository>();
+            services.AddSingleton<ITipoProveedor, TipoProveedorRepository>();
+            services.AddSingleton<IPelicula, PeliculaRepository>();
+            services.AddSingleton<ITipoPelicula, TipoPeliculaRepository>();
+            services.AddSingleton<IProveedor, ProveedorRepository>();
+            services.AddSingleton<ITipoProveedor, TipoProveedorRepository>();
+            services.AddSingleton<IUsuario, UsuarioRepository>();
+            services.AddSingleton<ITipoUsuario, TipoUsuarioRepository>();
+            services.AddSingleton<IBoleta,BoletaRepository>();
+            services.AddSingleton<ILogin,LoginRepository>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(option =>
@@ -63,6 +77,8 @@ namespace Cineplus_DSW_Proyecto
                     name: "default",
                     pattern: "{controller=Login}/{action=login}/{id?}");
             });
+
+            Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath, "../Rotativa");
         }
     }
 }

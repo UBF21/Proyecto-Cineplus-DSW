@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Cineplus_DSW_Proyecto.DataAccess;
+
 using Cineplus_DSW_Proyecto.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Cineplus_DSW_Proyecto.Repository.IModel;
+using Cineplus_DSW_Proyecto.Repository.Implents;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
@@ -11,7 +13,13 @@ namespace Cineplus_DSW_Proyecto.Controllers
     {
         #region Acceso a Datos
 
-        ClienteAccess clienteAccess = new ClienteAccess();
+        private ICliente clienterepo;
+
+        public ClienteController()
+        {
+            clienterepo = new ClienteRepository();
+        }
+        
         #endregion
 
         #region Acciones
@@ -19,8 +27,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
         [HttpGet]
         public IActionResult crear()
         {
-            ViewBag.clientes = clienteAccess.listar();
-            ViewBag.cantidadClientes = clienteAccess.listar().Count();
+            ViewBag.clientes = clienterepo.listar();
+            ViewBag.cantidadClientes = clienterepo.listar().Count();
             return View();
         }
 
@@ -29,13 +37,13 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.clientes = clienteAccess.listar();
-                clienteAccess.agregar(cliente);
-                ViewBag.cantidadClientes = clienteAccess.listar().Count();
+                ViewBag.clientes = clienterepo.listar();
+                clienterepo.agregar(cliente);
+                ViewBag.cantidadClientes = clienterepo.listar().Count();
                 return RedirectToAction("crear");
             }
-            ViewBag.clientes = clienteAccess.listar();
-            ViewBag.cantidadClientes = clienteAccess.listar().Count();
+            ViewBag.clientes = clienterepo.listar();
+            ViewBag.cantidadClientes = clienterepo.listar().Count();
             return View(cliente);
         }
 
@@ -43,16 +51,16 @@ namespace Cineplus_DSW_Proyecto.Controllers
         public IActionResult editar(int id)
         {
 
-            Cliente cliente = clienteAccess.obtener(id);
+            Cliente cliente = clienterepo.obtener(id);
 
             if (cliente == null)
             {
-                ViewBag.clientes = clienteAccess.listar();
-                ViewBag.cantidadClientes = clienteAccess.listar().Count();
+                ViewBag.clientes = clienterepo.listar();
+                ViewBag.cantidadClientes = clienterepo.listar().Count();
                 RedirectToAction("crear");
             }
-            ViewBag.clientes = clienteAccess.listar();
-            ViewBag.cantidadClientes = clienteAccess.listar().Count();
+            ViewBag.clientes = clienterepo.listar();
+            ViewBag.cantidadClientes = clienterepo.listar().Count();
             return View(cliente);
         }
 
@@ -61,9 +69,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.clientes = clienteAccess.listar();
-                ViewBag.cantidadClientes = clienteAccess.listar().Count();
-                clienteAccess.editar(cliente);
+                ViewBag.clientes = clienterepo.listar();
+                ViewBag.cantidadClientes = clienterepo.listar().Count();
+                clienterepo.editar(cliente);
                 return RedirectToAction("crear");
             }
 

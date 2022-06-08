@@ -1,5 +1,7 @@
-﻿using Cineplus_DSW_Proyecto.DataAccess;
+﻿
 using Cineplus_DSW_Proyecto.Models;
+using Cineplus_DSW_Proyecto.Repository.IModel;
+using Cineplus_DSW_Proyecto.Repository.Implents;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,18 +12,25 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize]
     public class ComestibleController : Controller
     {
-        ComestibleAccess comestibleAccess = new ComestibleAccess();
-        TipoProveedorAccess tipoProveedorAccess = new TipoProveedorAccess();
-        TipoComestibleAccess tipoComestibleAccess = new TipoComestibleAccess();
 
+        private IComestible repoComestible;
+        private ITipoComestible repoTipoComestible;
+        private ITipoProveedor repoTipoProveedor;
+
+        public ComestibleController()
+        {
+            repoComestible = new ComestibleRepository();
+            repoTipoComestible = new TipoComestibleRepository();
+            repoTipoProveedor = new TipoProveedorRepository();
+        }
 
         [HttpGet]
         public IActionResult crear()
         {
-            ViewBag.comestibles = comestibleAccess.listar();
-            ViewBag.cantidadComestibles = comestibleAccess.listar().Count();
-            ViewBag.tiposComestibles = new SelectList(tipoComestibleAccess.listar(), "id", "descripcion");
-            ViewBag.proveedores = new SelectList(tipoProveedorAccess.listar(), "id", "nombre");
+            ViewBag.comestibles = repoComestible.listar();
+            ViewBag.cantidadComestibles = repoComestible.listar().Count();
+            ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion");
+            ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre");
             return View();
         }
 
@@ -30,37 +39,37 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.comestibles = comestibleAccess.listar();
-                ViewBag.cantidadComestibles = comestibleAccess.listar().Count();
-                ViewBag.tiposComestibles = new SelectList(tipoComestibleAccess.listar(), "id", "descripcion");
-                ViewBag.proveedores = new SelectList(tipoProveedorAccess.listar(), "id", "nombre");
-                comestibleAccess.agregar(obj);
+                ViewBag.comestibles = repoComestible.listar();
+                ViewBag.cantidadComestibles = repoComestible.listar().Count();
+                ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion");
+                ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre");
+                repoComestible.agregar(obj);
                 return RedirectToAction("crear");
             }
 
-            ViewBag.comestibles = comestibleAccess.listar();
-            ViewBag.cantidadComestibles = comestibleAccess.listar().Count();
-            ViewBag.tiposComestibles = new SelectList(tipoComestibleAccess.listar(), "id", "descripcion");
-            ViewBag.proveedores = new SelectList(tipoProveedorAccess.listar(), "id", "nombre");
+            ViewBag.comestibles = repoComestible.listar();
+            ViewBag.cantidadComestibles = repoComestible.listar().Count();
+            ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion");
+            ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre");
             return View(obj);
         }
 
         [HttpGet]
         public IActionResult editar(string id)
         {
-            Comestible obj = comestibleAccess.obtener(id);
+            Comestible obj = repoComestible.obtener(id);
             if (obj == null)
             {
-                ViewBag.comestibles = comestibleAccess.listar();
-                ViewBag.cantidadComestibles = comestibleAccess.listar().Count();
-                ViewBag.tiposComestibles = new SelectList(tipoComestibleAccess.listar(), "id", "descripcion",1);
-                ViewBag.proveedores = new SelectList(tipoProveedorAccess.listar(), "id", "nombre",1);
+                ViewBag.comestibles = repoComestible.listar();
+                ViewBag.cantidadComestibles = repoComestible.listar().Count();
+                ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion",1);
+                ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre",1);
                 return RedirectToAction("crear");
             }
-            ViewBag.comestibles = comestibleAccess.listar();
-            ViewBag.cantidadComestibles = comestibleAccess.listar().Count();
-            ViewBag.tiposComestibles = new SelectList(tipoComestibleAccess.listar(), "id", "descripcion",obj.idTipo);
-            ViewBag.proveedores = new SelectList(tipoProveedorAccess.listar(), "id", "nombre",obj.idProveedor);
+            ViewBag.comestibles = repoComestible.listar();
+            ViewBag.cantidadComestibles = repoComestible.listar().Count();
+            ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion",obj.idTipo);
+            ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre",obj.idProveedor);
             return View(obj);
         }
 
@@ -69,17 +78,18 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.comestibles = comestibleAccess.listar();
-                ViewBag.cantidadComestibles = comestibleAccess.listar().Count();
-                ViewBag.tiposComestibles = new SelectList(tipoComestibleAccess.listar(), "id", "descripcion",obj.idTipo);
-                ViewBag.proveedores = new SelectList(tipoProveedorAccess.listar(), "id", "nombre",obj.idProveedor);
-                comestibleAccess.actualizar(obj);
+                ViewBag.comestibles = repoComestible.listar();
+                ViewBag.cantidadComestibles = repoComestible.listar().Count();
+                ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion",obj.idTipo);
+                ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre",obj.idProveedor);
+                repoComestible.actualizar(obj);
+                return RedirectToAction("crear");
             }
 
-            ViewBag.comestibles = comestibleAccess.listar();
-            ViewBag.cantidadComestibles = comestibleAccess.listar().Count();
-            ViewBag.tiposComestibles = new SelectList(tipoComestibleAccess.listar(), "id", "descripcion",obj.idTipo);
-            ViewBag.proveedores = new SelectList(tipoProveedorAccess.listar(), "id", "nombre",obj.idProveedor);
+            ViewBag.comestibles = repoComestible.listar();
+            ViewBag.cantidadComestibles = repoComestible.listar().Count();
+            ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion",obj.idTipo);
+            ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre",obj.idProveedor);
             return View(obj);
         }
     }
