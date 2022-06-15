@@ -1,0 +1,70 @@
+﻿@model Cineplus_DSW_Proyecto.Models.Comestible
+
+@{
+    ViewData["Title"] = "crear";
+}
+
+
+
+<div class="row">
+    <div class="col-3 mt-2">
+        <h2>Comestible</h2>
+        <form asp-action="crear" asp-controller="Comestible" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idComestible" class="control-label"></label>
+                <input asp-for="idComestible" class="form-control" placeholder="C0000" />
+                <span asp-validation-for="idComestible" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descripcion" class="control-label"></label>
+                <input asp-for="descripcion" class="form-control" placeholder="Descripción...." />
+                <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precio" class="control-label"></label>
+                <input asp-for="precio" class="form-control" type="number"  />
+                <span asp-validation-for="precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stock" class="control-label"></label>
+                <input asp-for="stock" class="form-control" type="number" />
+                <span asp-validation-for="stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idTipo" class="control-label"></label>
+                <select asp-for="idTipo" asp-items="@ViewBag.tiposComestibles" class="form-control"></select>
+                <span asp-validation-for="idTipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idProveedor" class="control-label"></label>
+                <select asp-for="idProveedor" asp-items="@ViewBag.proveedores" class="form-control"></select>
+                <span asp-validation-for="idProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estado" class="control-label"></label>
+                <select asp-for="estado" class="form-control">
+                    <option selected value="B">[Seleccionar]</option>
+                    <option value="A">Activo</option>
+                    <option value="I">Inactivo</option>
+                </select>
+                <span asp-validation-for="estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" style="font-weight:bold;" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-9">
+        <h1>Mantenimiento de Comestibles <span class="badge badge-pill badge-primary">@ViewBag.cantidadComestibles</span> </h1>
+        @await Html.PartialAsync("_listadoComestible",(IEnumerable<Cineplus_DSW_Proyecto.Models.Comestible>) @ViewBag.comestibles)
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

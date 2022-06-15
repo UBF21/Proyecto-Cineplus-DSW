@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Cineplus_DSW_Proyecto.Models.Cliente>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reporte de Clientes</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body style="background-color:#f0ffff;">
+
+    <h1 class="text-center"><span class="badge badge-primary" style="font-size:4.6rem">Reporte de Clientes <i class="fas fa-barcode-alt"></i></span></h1>
+    <br />
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="font-size:1.3rem">
+                    @Html.DisplayNameFor(model => model.id)
+                </th>
+                <th style="font-size:1.3rem">
+                    @Html.DisplayNameFor(model => model.nombre)
+                </th>
+                <th style="font-size:1.3rem">
+                    @Html.DisplayNameFor(model => model.telefono)
+                </th>
+                <th style="font-size:1.3rem">
+                    @Html.DisplayNameFor(model => model.direccion)
+                </th>
+                <th style="font-size:1.3rem">
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th style="font-size:1.3rem">
+                    @Html.DisplayNameFor(model => model.estado)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="font-size:1.3rem">
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                    <td style="font-size:1.3rem">
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td style="font-size:1.3rem">
+                        @Html.DisplayFor(modelItem => item.telefono)
+                    </td>
+                    <td style="font-size:1.3rem">
+                        @Html.DisplayFor(modelItem => item.direccion)
+                    </td>
+                    <td style="font-size:1.3rem">
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td style="font-size:1.3rem">
+                        @Html.DisplayFor(modelItem => item.estado)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

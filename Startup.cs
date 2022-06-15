@@ -1,3 +1,6 @@
+using Cineplus_DSW_Proyecto.Repository.IModel;
+using Cineplus_DSW_Proyecto.Repository.Implents;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +27,26 @@ namespace Cineplus_DSW_Proyecto
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<ICliente,ClienteRepository>();
+            services.AddSingleton<IComestible,ComestibleRepository>();
+            services.AddSingleton<ITipoComestible, TipoComestibleRepository>();
+            services.AddSingleton<ITipoProveedor, TipoProveedorRepository>();
+            services.AddSingleton<IPelicula, PeliculaRepository>();
+            services.AddSingleton<ITipoPelicula, TipoPeliculaRepository>();
+            services.AddSingleton<IProveedor, ProveedorRepository>();
+            services.AddSingleton<ITipoProveedor, TipoProveedorRepository>();
+            services.AddSingleton<IUsuario, UsuarioRepository>();
+            services.AddSingleton<ITipoUsuario, TipoUsuarioRepository>();
+            services.AddSingleton<IBoleta,BoletaRepository>();
+            services.AddSingleton<ILogin,LoginRepository>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(option =>
+                {
+                    option.LoginPath = "/Login/login";
+                    option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,14 +67,18 @@ namespace Cineplus_DSW_Proyecto
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=login}/{id?}");
             });
+
+            Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath, "../Rotativa");
         }
     }
 }
