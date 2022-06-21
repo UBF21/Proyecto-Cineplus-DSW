@@ -1,28 +1,43 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     ViewData["Title"] = "presentacion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div class="row align-items-center vh-100s mb-2">
     <div class="col-lg-11 mx-auto ">
         <div class="p-5 rounded shadow">
 
             <h1 class="display-4" style="font-size: 2.6rem;">!Bienvenido <i>@ViewBag.usuario</i>, al Sistema CinePlus!</h1>
-            <p class="lead">Este Sistema Tiene como fin la gestión de una empresa de Cine.</p>
+            <p class="lead">Este Sistema iiene como fin la gestión de una empresa de Cine.</p>
             <hr class="my-4">
             <p>Este Sistema está en Desarrollo,por ende, esta en constante Actualización.</p>
-            <p>Este Sistema Tiene las Funciones :</p>
+            <p>Este Sistema Tiene las Funciones con el rol <strong>@(((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Role).Value)</strong> :</p>
             <br>
             <ul class="list-group col-lg-4">
-                <li class="list-group-item list-group-item-action active">Mantenimiento de  Clientes <span class="badge badge-pill badge-light">@ViewBag.cantidadClientes</span></li>
-                <li class="list-group-item ">Mantenimiento de Usuarios <span class="badge badge-pill badge-primary">@ViewBag.cantidadUsuarios</span></li>
-                <li class="list-group-item list-group-item-action active">Mantenimiento de Comestibles <span class="badge badge-pill badge-light">@ViewBag.cantidadComestibles</span></li>
-                <li class="list-group-item ">Mantenimiento Peliculas <span class="badge badge-pill badge-primary">@ViewBag.cantidadPeliculas</span></li>
-                <li class="list-group-item list-group-item-action active">Mantenimiento de Proveedores <span class="badge badge-pill badge-light">@ViewBag.cantidadProveedores</span></li>
-                <li class="list-group-item ">Reporte de ventas </li>
-                <li class="list-group-item list-group-item-action active">Reporte de Clientes</li>
-                <li class="list-group-item ">Reporte de Boleta</li>
+                @if (@User.IsInRole("Administrador"))
+                {
+                    <li class="list-group-item list-group-item-action active">Mantenimiento de  Clientes <span class="badge badge-pill badge-light">@ViewBag.cantidadClientes</span></li>
+                    <li class="list-group-item ">Mantenimiento de Usuarios <span class="badge badge-pill badge-primary">@ViewBag.cantidadUsuarios</span></li>
+                    <li class="list-group-item list-group-item-action active">Mantenimiento de Comestibles <span class="badge badge-pill badge-light">@ViewBag.cantidadComestibles</span></li>
+                    <li class="list-group-item ">Mantenimiento Películas <span class="badge badge-pill badge-primary">@ViewBag.cantidadPeliculas</span></li>
+                    <li class="list-group-item list-group-item-action active">Mantenimiento de Proveedores <span class="badge badge-pill badge-light">@ViewBag.cantidadProveedores</span></li>
+                    
+                    <li class="list-group-item ">Reporte de ventas </li>
+                    <li class="list-group-item list-group-item-action active">Reporte de Clientes</li>
+                    <li class="list-group-item ">Reporte de Boleta</li>
+                }
+                @if (@User.IsInRole("Supervisor"))
+                {
+                    <li class="list-group-item list-group-item-action active">Analisis de Clientes</li>
+                    <li class="list-group-item ">Analisis de Usuarios</li>
+                    <li class="list-group-item list-group-item-action active">Analisis de Comestibles</li>
+                    <li class="list-group-item ">Analisis de Películas</li>
+
+                    <li class="list-group-item list-group-item-action active">Reporte de ventas </li>
+                    <li class="list-group-item ">Reporte de Clientes</li>
+                    <li class="list-group-item list-group-item-action active">Reporte de Boleta</li>
+                }
 
 
             </ul>

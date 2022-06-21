@@ -12,5 +12,9 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
         public int agregar(Comestible obj);
 
         public int actualizar(Comestible obj);
+
+        public bool existeComestible(string id);
+
+        public IEnumerable<Comestible> comestibleFiltro(int tipo);
     }
 }

@@ -12,5 +12,7 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
         public int actualizar(Pelicula obj);
 
         public Pelicula obtener(string id);
+
+        public bool existePelicula(string id);
     }
 }

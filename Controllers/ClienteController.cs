@@ -8,7 +8,7 @@ using Cineplus_DSW_Proyecto.Repository.Implents;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class ClienteController : Controller
     {
         #region Acceso a Datos
@@ -19,7 +19,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             clienterepo = new ClienteRepository();
         }
-        
+
         #endregion
 
         #region Acciones
@@ -37,10 +37,28 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.clientes = clienterepo.listar();
-                clienterepo.agregar(cliente);
-                ViewBag.cantidadClientes = clienterepo.listar().Count();
-                return RedirectToAction("crear");
+                if (clienterepo.existeEmail(cliente.email))
+                {
+                    ViewBag.clientes = clienterepo.listar();
+                    ViewBag.cantidadClientes = clienterepo.listar().Count();
+                    ViewBag.duplicado = "El ID ya existe en la BD.";
+                    return View(cliente);
+                }
+                else if (cliente.estado.Equals("B"))
+                {
+                    ViewBag.clientes = clienterepo.listar();
+                    ViewBag.cantidadClientes = clienterepo.listar().Count();
+                    ViewBag.validacion = "Seleccione un estado.";
+                    return View(cliente);
+                }
+                else
+                {
+                    ViewBag.clientes = clienterepo.listar();
+                    clienterepo.agregar(cliente);
+                    ViewBag.cantidadClientes = clienterepo.listar().Count();
+                    return RedirectToAction("crear");
+
+                }
             }
             ViewBag.clientes = clienterepo.listar();
             ViewBag.cantidadClientes = clienterepo.listar().Count();
@@ -69,6 +87,13 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (cliente.estado.Equals("B"))
+                {
+                    ViewBag.clientes = clienterepo.listar();
+                    ViewBag.cantidadClientes = clienterepo.listar().Count();
+                    ViewBag.validacion = "Seleccione un estado.";
+                    return View(cliente);
+                }
                 ViewBag.clientes = clienterepo.listar();
                 ViewBag.cantidadClientes = clienterepo.listar().Count();
                 clienterepo.editar(cliente);
@@ -77,6 +102,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
 
             return View(cliente);
         }
+
+
         #endregion
     }
 }

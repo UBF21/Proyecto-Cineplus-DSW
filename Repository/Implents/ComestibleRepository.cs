@@ -89,6 +89,22 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             return resultado;
         }
 
+        public IEnumerable<Comestible> comestibleFiltro(int tipo)
+        {
+            List<Comestible> listado = new List<Comestible>();
+            listado = listar().Where((item) => item.idTipo == tipo).ToList();
+            return listado;
+        }
+
+        public bool existeComestible(string id)
+        {
+            bool respuesta = false;
+
+            respuesta = listar().Any((item) => item.idComestible.Equals(id));
+
+            return respuesta;
+        }
+
         public IEnumerable<Comestible> listar()
         {
             List<Comestible> lista = new List<Comestible>();

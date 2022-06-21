@@ -5,7 +5,7 @@ namespace Cineplus_DSW_Proyecto.Models
     public class Cliente
     {
 
-        [Display(Name = "ID", Order = 0)]
+  
         public int id { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]

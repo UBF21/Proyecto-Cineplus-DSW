@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class ProveedorController : Controller
     {
         private IProveedor repoProveedor;

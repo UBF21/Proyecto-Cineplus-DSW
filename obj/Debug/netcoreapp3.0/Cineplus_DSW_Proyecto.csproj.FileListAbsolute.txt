@@ -155,3 +155,7 @@ C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Deb
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\RPBoleta\reportePDF.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\RPCliente\reportePDF.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\RPVenta\reportePDF.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\ClienteGraphic\datos.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\ComestibleGraphic\datos.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\PeliculaGraphic\datos.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\UsuarioGraphic\datos.cshtml.g.cs

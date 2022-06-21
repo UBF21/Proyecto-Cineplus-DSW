@@ -11,7 +11,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
 {
 
 
-    [Authorize]
+    [Authorize(Roles = "Administrador,Supervisor")]
     public class PresentacionController : Controller
     {
         private ICliente repoCliente;

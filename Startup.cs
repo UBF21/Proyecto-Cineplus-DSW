@@ -39,6 +39,10 @@ namespace Cineplus_DSW_Proyecto
             services.AddSingleton<ITipoUsuario, TipoUsuarioRepository>();
             services.AddSingleton<IBoleta,BoletaRepository>();
             services.AddSingleton<ILogin,LoginRepository>();
+            services.AddSingleton<IClienteGraphic,ClienteGraphicRepository>();
+            services.AddSingleton<IUsuarioGraphic,UsuarioGraphicRepository>();
+            services.AddSingleton<IPeliculaGraphic, PeliculaGraphicRepository>();
+            services.AddSingleton<IComestibleGraphic,ComestibleGraphicRepository>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(option =>

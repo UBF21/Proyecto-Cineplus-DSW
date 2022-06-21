@@ -82,6 +82,14 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             return resultado;
         }
 
+        public bool existePelicula(string id)
+        {
+            bool respuesta = false;
+
+            respuesta = listar().Any((item) => item.codPelicula.Equals(id));
+            return respuesta;
+        }
+
         public IEnumerable<Pelicula> listar()
         {
             List<Pelicula> lista = new List<Pelicula>();

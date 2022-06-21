@@ -16,6 +16,7 @@
                 <label asp-for="idUsuario" class="control-label"></label>
                 <input asp-for="idUsuario" class="form-control" placeholder="A00000" />
                 <span asp-validation-for="idUsuario" class="text-danger"></span>
+                <span class="text-danger">@ViewBag.duplicadoID</span>
             </div>
             <div class="form-group">
                 <label asp-for="nombre" class="control-label"></label>
@@ -41,6 +42,7 @@
                 <label asp-for="email" class="control-label"></label>
                 <input asp-for="email" class="form-control" placeholder="example@gmail.com"/>
                 <span asp-validation-for="email" class="text-danger"></span>
+                <span class="text-danger">@ViewBag.duplicadoEmail</span>
             </div>
             <div class="form-group">
                 <label asp-for="password" class="control-label"></label>

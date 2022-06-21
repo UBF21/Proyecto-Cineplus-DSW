@@ -1,0 +1,177 @@
+﻿@model IEnumerable<Cineplus_DSW_Proyecto.Models.Cliente>
+
+@{
+    ViewData["Title"] = "datos";
+}
+
+
+<div class="row">
+    <div class="col-12 mb-3">
+
+        <h1 class="text-center" style="font-size:3rem;"> <span class="badge badge-primary">Cuadro de datos de Clientes</span></h1>
+    </div>
+
+    <div class="col-6 mt-2">
+
+        <h2> <span class="font-weight-bold">Datos del Cuadro Estadístico</span></h2>
+        <p>
+            <span>
+                Este cuadro estadístico permite poder ver un panorama
+                de la cantidad de Clientes que estan activos e inactivos,
+                de esta manera recopilamos información de cuantos clientes
+                estan usando el servicio del cine.
+            </span>
+        </p>
+    </div>
+
+    <div class="col-6">
+        <canvas id="myChart" width="70" height="40"></canvas>
+    </div>
+
+    <div class="col-12 mt-2 mb-2">
+
+        <div class="col-12 mt-2 mb-2">
+
+            <h3 class="text-center"> <span class="badge badge-dark" style="font-size:3rem;">Listado de Clientes</span></h3>
+            <form asp-action="datos" asp-controller="ClienteGraphic" method="get" class="mt-4">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-info">Consultar!</button>
+                            </span>
+                            <select name="estado" class="form-control">
+                                <option selected value="B">[Seleccionar]</option>
+                                <option value="A">Activo</option>
+                                <option value="I">Inactivo</option>
+                            </select>
+                        </div><!-- /input-group -->
+                            <div>
+                                <span class="text-danger">@ViewBag.validacion</span>
+                            </div>
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+
+            </form>
+            <br />
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.telefono)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.direccion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.direccion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.estado)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+@section Scripts
+    {
+    <script>
+
+
+        jQuery.ajax({
+            url: '@Url.Action("clienteDatos","ClienteGraphic")',
+            type: "Get",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+                console.log(data);
+
+                var arregloCantidad = [];
+                var arregloEstado = ["Activo", "Inactivo"];
+                for (let i = 0; i < data.length; i++) {
+                    arregloCantidad.push(data[i].cantidad)
+                }
+                console.log(arregloCantidad);
+                console.log(arregloEstado);
+
+
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: arregloEstado,
+                        datasets: [{
+                            label: '# of Votes',
+                            data: arregloCantidad,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+
+
+
+
+
+            },
+            error: function(error) {
+                console.log(error)
+            }
+        });
+    </script>
+}
+

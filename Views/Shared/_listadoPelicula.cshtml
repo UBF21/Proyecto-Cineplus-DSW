@@ -30,31 +30,32 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
 
             <tr>
                 <td>
-                @Html.DisplayFor(modelItem => item.codPelicula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td class="text-center"> 
-                @Html.DisplayFor(modelItem => item.tipoPelicula)
-            </td>
-            <td>
-                @item.fechaEstreno.ToString(string.Format("yyyy-MM-dd"))
-            </td>
-            <td>
-               @item.fechaFinal.ToString(string.Format("yyyy-MM-dd"))
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "editar", new { id=item.codPelicula},new {@class = "btn btn-outline-info font-weight-bold"})
-            </td>
-        </tr>
-}
+                    @Html.DisplayFor(modelItem => item.codPelicula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.tipoPelicula)
+                </td>
+                <td>
+                    @item.fechaEstreno.ToString(string.Format("yyyy/MM/dd"))
+                </td>
+                <td>
+                    @item.fechaFinal.ToString(string.Format("yyyy/MM/dd"))
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "editar", new { id=item.codPelicula},new {@class = "btn btn-outline-info font-weight-bold"})
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

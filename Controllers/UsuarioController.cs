@@ -9,10 +9,10 @@ using System.Linq;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class UsuarioController : Controller
     {
-    
+
         private IUsuario repoUsuario;
         private ITipoUsuario repoTipoUsuario;
 
@@ -32,15 +32,35 @@ namespace Cineplus_DSW_Proyecto.Controllers
         }
 
         [HttpPost]
-        public IActionResult crear(Usuario obj) 
+        public IActionResult crear(Usuario obj)
         {
             if (ModelState.IsValid)
             {
-                ViewBag.usuarios = repoUsuario.listar();
-                ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
-                ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion");
-                repoUsuario.agregar(obj);
-                return RedirectToAction("crear");
+                if (repoUsuario.existeUsuario(obj.idUsuario))
+                {
+                    ViewBag.usuarios = repoUsuario.listar();
+                    ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
+                    ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion", obj.tipoUsuario);
+                    ViewBag.duplicadoID = "El ID ya existe en la BD";
+                    return View(obj);
+                }
+                else if (repoUsuario.existeEmail(obj.email))
+                {
+                    ViewBag.usuarios = repoUsuario.listar();
+                    ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
+                    ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion", obj.tipoUsuario);
+                    ViewBag.duplicadoEmail = "El Email ya existe en la BD";
+                    return View(obj);
+                }
+                else
+                {
+
+                    ViewBag.usuarios = repoUsuario.listar();
+                    ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
+                    ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion");
+                    repoUsuario.agregar(obj);
+                    return RedirectToAction("crear");
+                }
 
             }
 
@@ -51,25 +71,25 @@ namespace Cineplus_DSW_Proyecto.Controllers
         }
 
         [HttpGet]
-        public IActionResult editar(string id) 
+        public IActionResult editar(string id)
         {
             Usuario obj = repoUsuario.obtener(id);
             if (obj == null)
             {
                 ViewBag.usuarios = repoUsuario.listar();
                 ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
-                ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion",1);
+                ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion", 1);
                 return RedirectToAction("crear");
             }
 
             ViewBag.usuarios = repoUsuario.listar();
             ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
-            ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion",obj.tipoUsuario);
+            ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion", obj.tipoUsuario);
             return View(obj);
         }
 
         [HttpPost]
-        public IActionResult editar(Usuario obj) 
+        public IActionResult editar(Usuario obj)
         {
             if (ModelState.IsValid)
             {

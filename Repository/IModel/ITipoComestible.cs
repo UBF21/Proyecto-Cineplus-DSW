@@ -6,5 +6,7 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
     public interface ITipoComestible
     {
         public IEnumerable<TipoComestible> listar();
+
+
     }
 }

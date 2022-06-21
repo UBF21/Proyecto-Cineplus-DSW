@@ -31,6 +31,8 @@
     <tbody>
         @foreach (var item in Model)
         {
+               double precio = item.precio;
+            string precioFormato = string.Format("{0:C}", precio);
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.idComestible)
@@ -39,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.descripcion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.precio)
+                    @precioFormato
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.stock)

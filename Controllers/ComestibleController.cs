@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class ComestibleController : Controller
     {
 
@@ -39,6 +39,25 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (repoComestible.existeComestible(obj.idComestible))
+                {
+                    ViewBag.comestibles = repoComestible.listar();
+                    ViewBag.cantidadComestibles = repoComestible.listar().Count();
+                    ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion",obj.idTipo);
+                    ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre",obj.idProveedor);
+                    ViewBag.duplicado = "El ID ya existe en la BD";
+                    return View(obj);
+                }
+                else if (obj.estado.Equals("B"))
+                {
+                    ViewBag.comestibles = repoComestible.listar();
+                    ViewBag.cantidadComestibles = repoComestible.listar().Count();
+                    ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion", obj.idTipo);
+                    ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre", obj.idProveedor);
+                    ViewBag.validacion = "Seleccione un estado.";
+                    return View(obj);
+                }
+
                 ViewBag.comestibles = repoComestible.listar();
                 ViewBag.cantidadComestibles = repoComestible.listar().Count();
                 ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion");
@@ -78,6 +97,16 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (obj.estado.Equals("B"))
+                {
+
+                    ViewBag.comestibles = repoComestible.listar();
+                    ViewBag.cantidadComestibles = repoComestible.listar().Count();
+                    ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion", obj.idTipo);
+                    ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre", obj.idProveedor);
+                    ViewBag.validacion = "Seleccione un estado.";
+                    return View(obj);
+                }
                 ViewBag.comestibles = repoComestible.listar();
                 ViewBag.cantidadComestibles = repoComestible.listar().Count();
                 ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion",obj.idTipo);

@@ -9,18 +9,18 @@ using System.Linq;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class PeliculaController : Controller
     {
 
         private IPelicula repoPelicula;
         private ITipoPelicula repoTipoPelicula;
         public PeliculaController()
-        { 
+        {
             repoPelicula = new PeliculaRepository();
             repoTipoPelicula = new TipoPeliculaRepository();
         }
-        
+
         [HttpGet]
         public IActionResult crear()
         {
@@ -35,11 +35,31 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.peliculasCantidad = repoPelicula.listar().Count();
-                ViewBag.peliculas = repoPelicula.listar().Count();
-                ViewBag.tipoPeliculas = new SelectList(repoTipoPelicula.listar(), "codTipo", "descrip");
-                repoPelicula.crear(obj);
-                return RedirectToAction("crear");
+                if (repoPelicula.existePelicula(obj.codPelicula))
+                {
+                    ViewBag.peliculasCantidad = repoPelicula.listar().Count();
+                    ViewBag.peliculas = repoPelicula.listar();
+                    ViewBag.tipoPeliculas = new SelectList(repoTipoPelicula.listar(), "codTipo", "descrip",obj.tipoPelicula);
+                    ViewBag.duplicado = "El ID ya existe en la BD";
+                    return View(obj);
+                }
+                else if (obj.estado.Equals("B"))
+                {
+                    ViewBag.peliculasCantidad = repoPelicula.listar().Count();
+                    ViewBag.peliculas = repoPelicula.listar();
+                    ViewBag.tipoPeliculas = new SelectList(repoTipoPelicula.listar(), "codTipo", "descrip",obj.tipoPelicula);
+                    ViewBag.validacion = "Seleccione el estado.";
+                    return View(obj);
+                }
+                else
+                {
+
+                    ViewBag.peliculasCantidad = repoPelicula.listar().Count();
+                    ViewBag.peliculas = repoPelicula.listar();
+                    ViewBag.tipoPeliculas = new SelectList(repoTipoPelicula.listar(), "codTipo", "descrip");
+                    repoPelicula.crear(obj);
+                    return RedirectToAction("crear");
+                }
             }
 
             ViewBag.peliculasCantidad = repoPelicula.listar().Count();
@@ -67,10 +87,18 @@ namespace Cineplus_DSW_Proyecto.Controllers
         }
 
         [HttpPost]
-        public IActionResult editar(Pelicula obj) 
+        public IActionResult editar(Pelicula obj)
         {
             if (ModelState.IsValid)
             {
+                if (obj.estado.Equals("B"))
+                {
+                    ViewBag.peliculasCantidad = repoPelicula.listar().Count();
+                    ViewBag.peliculas = repoPelicula.listar();
+                    ViewBag.tipoPeliculas = new SelectList(repoTipoPelicula.listar(), "codTipo", "descrip",obj.tipoPelicula);
+                    ViewBag.validacion = "Seleccione el estado.";
+                    return View(obj);
+                }
                 ViewBag.peliculasCantidad = repoPelicula.listar().Count();
                 ViewBag.tipoPeliculas = new SelectList(repoTipoPelicula.listar(), "codTipo", "descrip", obj.tipoPelicula);
                 ViewBag.peliculas = repoPelicula.listar();

@@ -14,6 +14,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
           integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
 </head>
 <body>
     <header>
@@ -21,35 +22,63 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Presentacion" asp-action="presentacion" style="font-weight: bold;">CINEPLUS</a>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
+
                     <ul class="navbar-nav navbar-nav">
                         <!--Dropdow de Mantenimientos-->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Mantenimientos</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="crear">Mantenimiento Clientes</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="crear">Mantenimiento Usuarios <i class="fas fa-users"></i></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="Pelicula" asp-action="crear">Mantenimiento Películas <i class="fas fa-camcorder"></i></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="Comestible" asp-action="crear">Mantenimiento Comestibles <i class="far fa-burger-soda"></i></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="crear">Mantenimiento Proveedores <i class="fas fa-apple-crate"></i></a>
-                            </div>
-                        </li>
-                        <!--Dropdow de Reportes-->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Reportes</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="" asp-controller="RPCliente" asp-action="reporte">Reporte Clientes</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="RPVenta" asp-action="reporte">Reporte Ventas</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="RPBoleta" asp-action="reporte">Boleta</a>
-                            </div>
-                        </li>
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Mantenimientos</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="crear">Mantenimiento Clientes</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="crear">Mantenimiento Usuarios <i class="fas fa-users"></i></a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pelicula" asp-action="crear">Mantenimiento Películas <i class="fas fa-camcorder"></i></a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Comestible" asp-action="crear">Mantenimiento Comestibles <i class="far fa-burger-soda"></i></a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="crear">Mantenimiento Proveedores <i class="fas fa-apple-crate"></i></a>
+                                </div>
+                            </li>
+                        }
 
+                        @if (User.IsInRole("Supervisor"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Analisis de Datos</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-area="" asp-controller="ClienteGraphic" asp-action="datos">Analisis de Clientes</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="UsuarioGraphic" asp-action="datos">Analisis de Usuarios</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PeliculaGraphic" asp-action="datos">Analisis de Películas</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ComestibleGraphic" asp-action="datos">Analisis de Comestibles</a>
+                                </div>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Supervisor") || User.IsInRole("Administrador"))
+                        {
+
+
+                            <!--Dropdow de Reportes-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Reportes</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-area="" asp-controller="RPCliente" asp-action="reporte">Reporte Clientes</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="RPVenta" asp-action="reporte">Reporte Ventas</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="RPBoleta" asp-action="reporte">Boleta</a>
+                                </div>
+                            </li>
+                        }
                     </ul>
+
                 </div>
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
@@ -81,11 +110,11 @@
 
                             @if (User.Identity.IsAuthenticated)
                             {
-                                
-                            <h3>Nombre:     <span class="badge bg-info text-light">@SessionHelper.GetName(User)</span></h3>
-                            <h3>Email :     <span class="badge bg-info text-light">@SessionHelper.GetNameIdentifier(User)</span></h3>
-                            <h3>Dirección :  <span class="badge bg-info text-light">@(((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.StreetAddress).Value)</span></h3>
-                            <h3>Teléfono  :  <span class="badge bg-info text-light">@(((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.MobilePhone).Value)</span></h3>
+
+                                <h3>Nombre:     <span class="badge bg-info text-light">@SessionHelper.GetName(User)</span></h3>
+                                <h3>Email :     <span class="badge bg-info text-light">@SessionHelper.GetNameIdentifier(User)</span></h3>
+                                <h3>Dirección :  <span class="badge bg-info text-light">@(((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.StreetAddress).Value)</span></h3>
+                                <h3>Teléfono  :  <span class="badge bg-info text-light">@(((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.MobilePhone).Value)</span></h3>
                             }
                         </div>
                     </div>
@@ -106,9 +135,9 @@
     </div>
     <br />
     <footer class="border-top  bg-light  footer text-muted mt-2">
-         <!-- Copyright -->
+        <!-- Copyright -->
         <div class="text-center p-2" style="background-color: rgba(245, 238, 238, 0.2);">
-          © 2022 Copyright
+            © 2022 Copyright
         </div>
         <!-- Copyright -->
     </footer>
@@ -116,6 +145,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

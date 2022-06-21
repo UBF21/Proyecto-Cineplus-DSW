@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Cineplus_DSW_Proyecto.Models.Comestible>
+
+@{
+    ViewData["Title"] = "datos";
+}
+
+<div class="row">
+    <div class="col-12 mb-3">
+
+        <h1 class="text-center" style="font-size:3rem;"> <span class="badge badge-primary">Cuadro de datos de Comestibles</span></h1>
+    </div>
+
+    <div class="col-6 mt-2">
+
+        <h2> <span class="font-weight-bold">Datos del Cuadro Estadístico</span></h2>
+
+        <p class="mt-4">
+            <span>
+                Este cuadro estadístico permite poder ver un panorama
+                de la cantidad de Tipo de Comestibles que existen en tiempo real,
+                de esta manera recopilamos información de los distintos
+                comestibles y sus respectivas cantidades para realizar un registro de la cantidad
+                de tipos de comestibles que se esta vendiendo con mas regularidad y así aumentar
+                el stock y en caso exista algun comestible el cual su venta tenga bajo rendimiento
+                poder optar por reducir el stock y reducir costos innecesarios con los proveedores.
+            </span>
+        </p>
+    </div>
+
+    <div class="col-6">
+        <canvas id="myChart" width="60" height="20"></canvas>
+    </div>
+
+    <div class="col-12 mt-2 mb-2">
+
+        <div class="col-12 mt-2 mb-2">
+
+            <h3 class="text-center"> <span class="badge badge-dark" style="font-size:3rem;">Listado de Comestibles</span></h3>
+            <form asp-action="datos" asp-controller="ComestibleGraphic" method="get" class="mt-4">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-info">Consultar!</button>
+                            </span>
+                            <select name="tipo" asp-items="@ViewBag.comestibles" class="form-control"></select>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+
+            </form>
+            <br />
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.idComestible)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.precio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.idTipo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.idProveedor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    double precio = item.precio;
+                    string precioFormato = string.Format("{0:C}", precio);
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idComestible)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descripcion)
+                        </td>
+                        <td>
+                            @precioFormato
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.stock)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idTipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idProveedor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.estado)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+@section Scripts
+    {
+    <script>
+
+
+        jQuery.ajax({
+            url: '@Url.Action("comestiblesDatos","ComestibleGraphic")',
+            type: "Get",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+                console.log(data);
+
+                var arregloCantidad = [];
+                var arregloTipo = [];
+                for (let i = 0; i < data.length; i++) {
+                    arregloCantidad.push(data[i].cantidad)
+                    arregloTipo.push(data[i].tipo)
+                }
+                console.log(arregloCantidad);
+                console.log(arregloTipo);
+
+
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: arregloTipo,
+                        datasets: [{
+                            label: '# of Votes',
+                            data: arregloCantidad,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(74, 142, 215, 0.2)',
+                                'rgba(67, 155, 115, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(74, 142, 215, 1)',
+                                'rgba(67, 155, 115, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+
+
+
+
+
+            },
+            error: function(error) {
+                console.log(error)
+            }
+        });
+    </script>
+}

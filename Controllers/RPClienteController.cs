@@ -8,9 +8,11 @@ using Rotativa.AspNetCore;
 using Microsoft.AspNetCore.Http;
 using Cineplus_DSW_Proyecto.Repository.IModel;
 using Cineplus_DSW_Proyecto.Repository.Implents;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
+    [Authorize(Roles = "Administrador,Supervisor")]
     public class RPClienteController : Controller
     {
         private ICliente repoCliente;
@@ -19,11 +21,19 @@ namespace Cineplus_DSW_Proyecto.Controllers
             repoCliente = new ClienteRepository();
         }
 
-        public IActionResult reporte(string estado = "")
+        public IActionResult reporte(string estado)
         {
+            if (string.IsNullOrEmpty(estado)) estado = string.Empty;
+
+            if (estado.Equals("B"))
+            {
+                ViewBag.validacion = "Seleccione un estado.";
+                List<Cliente> listado = repoCliente.listar().ToList();
+                return View(listado);
+            }
             TempData["estado"] = estado;
-            List<Cliente> listado = repoCliente.filtrarPorEstado(estado).ToList();
-            return View(listado);
+            List<Cliente> listadofiltrado = repoCliente.filtrarPorEstado(estado).ToList();
+            return View(listadofiltrado);
         }
 
         public IActionResult reportePDF()

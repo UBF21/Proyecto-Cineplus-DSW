@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Cineplus_DSW_Proyecto.Models.Pelicula>
+
+@{
+    ViewData["Title"] = "datos";
+}
+
+
+<div class="row">
+    <div class="col-12 mb-3">
+
+        <h1 class="text-center" style="font-size:3rem;"> <span class="badge badge-primary">Cuadro de datos de Películas</span></h1>
+    </div>
+
+    <div class="col-6 mt-2">
+
+        <h2> <span class="font-weight-bold">Datos del Cuadro Estadístico</span></h2>
+
+        <p class="mt-4">
+            <span>
+                Este cuadro logra poder ver un panorama de la cantidad de
+                películas dentro de la empresa de cine que existen en la <strong>B.D</strong> actualmente
+                registrados.
+                Al observar el cuadro se podran ver las películas repartidas
+                en la estadistica dependiendo del tipo de película y asi podemos
+                hacer una medición de los tipos de peliculas con mayor cantidad, permitiendo
+                entender si existe una equidad tipos de peliculas o no.
+            </span>
+        </p>
+    </div>
+
+    <div class="col-6">
+        <canvas id="myChart" width="60" height="30"></canvas>
+    </div>
+
+    <div class="col-12 mt-2 mb-2">
+
+        <div class="col-12 mt-2 mb-2">
+
+            <h3 class="text-center"> <span class="badge badge-dark" style="font-size:3rem;">Listado de Películas</span></h3>
+            <br />
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.codPelicula)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.tipoPelicula)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fechaEstreno)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fechaFinal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codPelicula)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tipoPelicula)
+                        </td>
+                        <td>
+                            @item.fechaEstreno.ToString(string.Format("yyyy/MM/dd"))
+                        </td>
+                        <td>
+                            @item.fechaFinal.ToString(string.Format("yyyy/MM/dd"))
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.estado)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+
+</div>
+
+
+@section Scripts
+    {
+    <script>
+
+
+        jQuery.ajax({
+            url: '@Url.Action("peliculaDatos","PeliculaGraphic")',
+            type: "Get",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+                console.log(data);
+
+                var arregloCantidad = [];
+                var arregloTipo = [];
+                for (let i = 0; i < data.length; i++) {
+                    arregloCantidad.push(data[i].cantidad)
+                    arregloTipo.push(data[i].tipo)
+                }
+                console.log(arregloCantidad);
+                console.log(arregloTipo);
+
+
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: arregloTipo,
+                        datasets: [{
+                            label: '# of Votes',
+                            data: arregloCantidad,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.3)',
+                                'rgba(54, 162, 235, 0.3)',
+                                'rgba(74, 142, 215, 0.3)',
+                                'rgba(67, 155, 115, 0.3)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(74, 142, 215, 1)',
+                                'rgba(67, 155, 115, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+            },
+            error: function(error) {
+                console.log(error)
+            }
+        });
+    </script>
+}

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "t5K2SLwIUtiGzhNI8jhXytFvYfNBZlcXdk3K7E2lJ8OO/zp/pcdWNJQMSOm4slinop0gjJpHj/HOp/Zm/VxOqw==",
+  "dgSpecHash": "9vOQJYnyvtjl5848p+fMyZfNRx4DKmifaoYs4JOsjLpoAnv11JtvofrHH5YG+Phg5OjHRex3J6SbnEP/UeLGkg==",
   "success": true,
   "projectFilePath": "C:\\Users\\FELIPE\\source\\repos\\Cineplus_DSW_Proyecto\\Cineplus_DSW_Proyecto\\Cineplus_DSW_Proyecto.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\FELIPE\\.nuget\\packages\\chart.js\\3.7.1\\chart.js.3.7.1.nupkg.sha512",
     "C:\\Users\\FELIPE\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.0.1\\microsoft.aspnetcore.antiforgery.2.0.1.nupkg.sha512",
     "C:\\Users\\FELIPE\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.0.1\\microsoft.aspnetcore.authentication.abstractions.2.0.1.nupkg.sha512",
     "C:\\Users\\FELIPE\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.0.1\\microsoft.aspnetcore.authentication.core.2.0.1.nupkg.sha512",

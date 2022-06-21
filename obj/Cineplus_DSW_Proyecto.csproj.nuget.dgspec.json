@@ -44,6 +44,10 @@
         "netcoreapp3.0": {
           "targetAlias": "netcoreapp3.0",
           "dependencies": {
+            "Chart.js": {
+              "target": "Package",
+              "version": "[3.7.1, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[3.0.0, )"

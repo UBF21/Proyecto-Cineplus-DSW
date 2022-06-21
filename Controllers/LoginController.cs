@@ -51,7 +51,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
                 identity.AddClaim(new Claim(ClaimTypes.Name, usuario.nombre));
                 identity.AddClaim(new Claim(ClaimTypes.MobilePhone, usuario.telefono));
                 identity.AddClaim(new Claim(ClaimTypes.StreetAddress, usuario.direccion));
-                identity.AddClaim(new Claim(ClaimTypes.Role, usuario.tipoUsuario.ToString()));
+                identity.AddClaim(new Claim(ClaimTypes.Role, repoUsuario.obtenerRol(usuario.tipoUsuario)));
                 
                 
                 var principal = new ClaimsPrincipal(identity);

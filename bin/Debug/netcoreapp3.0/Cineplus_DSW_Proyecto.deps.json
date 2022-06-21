@@ -30,6 +30,7 @@
     ".NETCoreApp,Version=v3.0": {
       "Cineplus_DSW_Proyecto/1.0.0": {
         "dependencies": {
+          "Chart.js": "3.7.1",
           "Microsoft.Extensions.Logging.Debug": "3.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.0.0",
           "Rotativa.AspNetCore": "1.2.0-beta",
@@ -318,6 +319,7 @@
           "Cineplus_DSW_Proyecto.dll": {}
         }
       },
+      "Chart.js/3.7.1": {},
       "Microsoft.AspNetCore.Antiforgery/2.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection": "2.0.1",
@@ -3810,6 +3812,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Chart.js/3.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gJunTMEueTNdA5Hp92J9sv363msSemW+GSy1VtbrwjxCaMrp+/mgB20EdVezbP34dbM+h+A8G5XbEuL6tOJoCw==",
+      "path": "chart.js/3.7.1",
+      "hashPath": "chart.js.3.7.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.0.1": {
       "type": "package",

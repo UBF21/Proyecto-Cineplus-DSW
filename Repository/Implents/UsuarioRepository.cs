@@ -92,6 +92,20 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             return resultado;
         }
 
+        public bool existeEmail(string email)
+        {
+            bool respuesta = false;
+            respuesta = listar().Any((item) => item.email.Equals(email));
+            return respuesta;
+        }
+
+        public bool existeUsuario(string id)
+        {
+            bool respuesta = false;
+            respuesta = listar().Any((item) => item.idUsuario.Equals(id));
+            return respuesta;
+        }
+
         public IEnumerable<Usuario> listar()
         {
             List<Usuario> listado = new List<Usuario>();
@@ -125,6 +139,27 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             Usuario obj = listar().Where((item) => item.idUsuario.Equals(id)).First();
 
             return obj;
+        }
+
+        public string obtenerRol(int rol)
+        {
+            string resultado = string.Empty;
+            switch (rol)
+            {
+                case 1:
+                    return resultado = "Administrador";
+                case 2:
+                    return resultado = "Supervisor";
+                default:
+                    return resultado = "No existe";
+            }
+        }
+
+        public IEnumerable<Usuario> usuariosFiltrado(int tipo)
+        {
+            List<Usuario> listado = new List<Usuario>();
+            listado = listar().Where((item)=> item.tipoUsuario == tipo).ToList();
+            return listado;
         }
     }
 }

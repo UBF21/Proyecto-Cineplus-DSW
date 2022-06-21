@@ -2,6 +2,7 @@
 using Cineplus_DSW_Proyecto.Models;
 using Cineplus_DSW_Proyecto.Repository.IModel;
 using Cineplus_DSW_Proyecto.Repository.Implents;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Rotativa.AspNetCore;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 
 namespace Cineplus_DSW_Proyecto.Controllers
 {
+    [Authorize(Roles = "Administrador,Supervisor")]
     public class RPVentaController : Controller
     {
        

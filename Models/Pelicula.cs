@@ -7,7 +7,9 @@ namespace Cineplus_DSW_Proyecto.Models
     {
 
         [Required(ErrorMessage = "Campo Requerido")]
-        [Display(Name ="Código",Order = 0), MaxLength(5, ErrorMessage = "Solo se admite máximo 4 caracteres.")]
+        [Display(Name ="Código",Order = 0)]
+        [DataType(DataType.Text)]
+        [RegularExpression("^[P]+[0-9]{4}$", ErrorMessage = "El Formato de ID es P0000")]
         public string codPelicula { get; set; }
 
 

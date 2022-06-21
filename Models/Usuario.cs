@@ -6,7 +6,9 @@ namespace Cineplus_DSW_Proyecto.Models
     {
 
         [Required(ErrorMessage = "Campo Requerido")]
-        [Display(Name = "ID",Order = 0),MinLength(6,ErrorMessage = "Es requerido 6 caracteres.")]
+        [Display(Name = "ID",Order = 0)]
+        [DataType(DataType.Text)]
+        [RegularExpression("^[A]+[0-9]{5}$", ErrorMessage = "El Formato de ID es A00000")]
         public string idUsuario { get; set; }
 
         

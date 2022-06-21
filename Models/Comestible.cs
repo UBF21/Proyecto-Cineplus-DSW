@@ -5,7 +5,9 @@ namespace Cineplus_DSW_Proyecto.Models
     public class Comestible
     {
         [Required(ErrorMessage ="Campo Requerido.")]
-        [Display(Name = "Código",Order = 0),MinLength(5, ErrorMessage ="Es requerido 5 caracteres.")]
+        [Display(Name = "Código",Order = 0)]
+        [DataType(DataType.Text)]
+        [RegularExpression("^[C]+[0-9]{4}$", ErrorMessage = "El Formato de ID es C0000")]
         public string idComestible { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido.")]
