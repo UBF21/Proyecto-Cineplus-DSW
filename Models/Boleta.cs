@@ -5,6 +5,7 @@ namespace Cineplus_DSW_Proyecto.Models
 {
     public class Boleta
     {
+        #region Atributos
 
         [Display(Name = "Código Boleta")]
         public string codBoleta { get; set; }
@@ -30,8 +31,10 @@ namespace Cineplus_DSW_Proyecto.Models
         
         [Display(Name = "Total")]
         public double precioTotal { get; set; }
+        #endregion
 
 
+        #region Constructor
         public Boleta()
         {
         }
@@ -45,5 +48,6 @@ namespace Cineplus_DSW_Proyecto.Models
             this.fechaBoleta = fechaBoleta;
             this.precioTotal = precioTotal;
         }
+        #endregion
     }
 }

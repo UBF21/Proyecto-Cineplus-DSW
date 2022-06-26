@@ -14,6 +14,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Administrador,Supervisor")]
     public class PresentacionController : Controller
     {
+        #region Acceso a datos
+        
         private ICliente repoCliente;
         private IUsuario repoUsuario;
         private IComestible repoComestible;
@@ -27,6 +29,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             repoProveedor = new ProveedorRepository();
             repoPelicula = new PeliculaRepository();
         }
+        #endregion
+
+        #region Acciones
         public IActionResult presentacion()
         {
             ViewBag.usuario = User.Identity.Name;
@@ -37,5 +42,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
             ViewBag.cantidadProveedores = repoProveedor.listar().Count();
             return View();
         }
+        #endregion
     }
 }

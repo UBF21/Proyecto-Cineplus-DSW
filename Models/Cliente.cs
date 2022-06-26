@@ -5,7 +5,7 @@ namespace Cineplus_DSW_Proyecto.Models
     public class Cliente
     {
 
-  
+        #region Atributos
         public int id { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
@@ -27,7 +27,11 @@ namespace Cineplus_DSW_Proyecto.Models
 
         [Display(Name = "Estado", Order = 5)]
         public string estado { get; set; }
+        #endregion
 
+
+        #region Constructor,metodos
+        
         public Cliente() { }
 
         public Cliente(int id, string nombre, string telefono, string direccion, string email, string estado)
@@ -44,5 +48,6 @@ namespace Cineplus_DSW_Proyecto.Models
         {
             return "[" + "ID: " + this.id + ",Nombre: " + this.nombre + ",Telefono : " + this.telefono + ",Direccion :" + this.direccion + ", Email: " + this.email + ", Estado: " + this.estado + "]";
         }
+        #endregion
     }
 }

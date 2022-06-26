@@ -4,6 +4,7 @@ namespace Cineplus_DSW_Proyecto.Models
 {
     public class Usuario
     {
+        #region Atributos
 
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "ID",Order = 0)]
@@ -48,7 +49,9 @@ namespace Cineplus_DSW_Proyecto.Models
         [Display(Name = "Estado", Order = 7)]
         public string estado { get; set; }
 
+        #endregion
 
+        #region Constructor
         public Usuario()
         {
         }
@@ -64,6 +67,8 @@ namespace Cineplus_DSW_Proyecto.Models
             this.password = password;
             this.estado = estado;
         }
+
+        #endregion
 
     }
 }

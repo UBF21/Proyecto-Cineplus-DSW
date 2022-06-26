@@ -15,6 +15,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Supervisor")]
     public class ClienteGraphicController : Controller
     {
+        #region Acceso a datos
+
         private ICliente clienteRepo;
         private IClienteGraphic clienteGraphicrepo;
         public ClienteGraphicController()
@@ -22,6 +24,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             clienteRepo = new ClienteRepository();
             clienteGraphicrepo = new ClienteGraphicRepository();
         }
+        #endregion
+
+        #region Acciones
         public IActionResult datos(string estado)
         {
             if (string.IsNullOrEmpty(estado))
@@ -54,6 +59,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
 
             return listado;
         }
+        #endregion
 
     }
 }

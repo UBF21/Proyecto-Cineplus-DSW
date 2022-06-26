@@ -13,6 +13,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Supervisor")]
     public class ComestibleGraphicController : Controller
     {
+        #region Acceso a datos
+
         private IComestibleGraphic comestibleGraphicRepo;
         private IComestible comestibleRepo;
         private ITipoComestible tipoComestibleRepo;
@@ -23,7 +25,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             comestibleRepo = new ComestibleRepository();
             tipoComestibleRepo = new TipoComestibleRepository();
         }
+        #endregion
 
+        #region Acciones
         public IActionResult datos(int tipo = 0)
         {
             if (tipo != 0)
@@ -43,5 +47,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
             listado = comestibleGraphicRepo.comestiblesDatos().ToList();
             return listado;
         }   
+        #endregion
     }
 }

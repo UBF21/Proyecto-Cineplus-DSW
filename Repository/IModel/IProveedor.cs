@@ -5,6 +5,7 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 {
     public interface IProveedor
     {
+        #region Metodos para Implentar
         public IEnumerable<Proveedor> listar();
 
         public Proveedor obtener(int id);
@@ -12,5 +13,6 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
         public int agregar(Proveedor obj);
 
         public int actualizar(Proveedor obj);
+        #endregion
     }
 }

@@ -8,7 +8,9 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 {
     public interface IUsuarioGraphic
     {
+        #region Metodos para Implentar
         public IEnumerable<UsuarioGraphic> usuariosDatos();
+        #endregion
 
     }
 }

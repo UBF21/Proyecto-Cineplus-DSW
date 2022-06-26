@@ -159,3 +159,5 @@ C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Deb
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\ComestibleGraphic\datos.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\PeliculaGraphic\datos.cshtml.g.cs
 C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\UsuarioGraphic\datos.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Comestible\pedido.cshtml.g.cs
+C:\Users\FELIPE\source\repos\Cineplus_DSW_Proyecto\Cineplus_DSW_Proyecto\obj\Debug\netcoreapp3.0\Razor\Views\Respuesta\respuestaExitosa.cshtml.g.cs

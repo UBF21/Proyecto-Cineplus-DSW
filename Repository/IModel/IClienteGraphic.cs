@@ -8,6 +8,9 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 {
     public interface IClienteGraphic
     {
+        #region Metodos para Implentar
         public IEnumerable<ClienteGraphic> clientesDatos();
+        
+        #endregion
     }
 }

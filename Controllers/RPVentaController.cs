@@ -14,14 +14,16 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Administrador,Supervisor")]
     public class RPVentaController : Controller
     {
-       
+        #region Acceso a datos
 
         private IBoleta repoBoleta;
         public RPVentaController()
         {
             repoBoleta = new BoletaRepository();
         }
-        
+        #endregion
+
+        #region Acceso
         public IActionResult reporte(int year = 0)
         {
             TempData["year"] = year;
@@ -39,5 +41,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
                 PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
             };
         }
+        #endregion
     }
 }

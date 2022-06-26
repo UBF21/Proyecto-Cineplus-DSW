@@ -4,6 +4,8 @@ namespace Cineplus_DSW_Proyecto.Models
 {
     public class Comestible
     {
+        #region Atributos
+
         [Required(ErrorMessage ="Campo Requerido.")]
         [Display(Name = "Código",Order = 0)]
         [DataType(DataType.Text)]
@@ -30,7 +32,9 @@ namespace Cineplus_DSW_Proyecto.Models
     
         [Display(Name = "Estado", Order = 6)]
         public string estado { get; set; }
+        #endregion
 
+        #region Constructor
 
         public Comestible()
         {
@@ -46,5 +50,6 @@ namespace Cineplus_DSW_Proyecto.Models
             this.idProveedor = idProveedor;
             this.estado = estado;
         }
+        #endregion
     }
 }

@@ -1,12 +1,14 @@
 ﻿namespace Cineplus_DSW_Proyecto.Models
 {
     public class TipoCliente
-    { 
-
+    {
+        #region Atributos
         public int idCliente { get; set; }
         public string nombre { get; set; }
 
+        #endregion
 
+        #region Constructor
         public TipoCliente()
         {
         }
@@ -16,5 +18,7 @@
             this.idCliente = idCliente;
             this.nombre = nombre;
         }
+
+        #endregion
     }
 }

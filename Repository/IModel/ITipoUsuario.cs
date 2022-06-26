@@ -5,6 +5,8 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 {
     public interface ITipoUsuario
     {
+        #region Metodos para Implentar
         public IEnumerable<TipoUsuario> listar();
+        #endregion
     }
 }

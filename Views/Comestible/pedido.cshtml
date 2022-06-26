@@ -1,0 +1,63 @@
+﻿@model Cineplus_DSW_Proyecto.Models.Comestible
+
+@{
+    ViewData["Title"] = "pedido";
+}
+
+<h1 class="text-center">Generar pedido de Comestible</h1>
+<br />
+
+<form asp-action="pedido">
+
+    <div class="form-row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group col-md-6">
+            <label asp-for="idComestible" class="control-label"></label>
+            <input asp-for="idComestible" class="form-control" readonly />
+            <span asp-validation-for="idComestible" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="descripcion" class="control-label"></label>
+            <input asp-for="descripcion" class="form-control" readonly />
+            <span asp-validation-for="descripcion" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="precio" class="control-label"></label>
+            <input asp-for="precio" class="form-control" readonly />
+            <span asp-validation-for="precio" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label asp-for="idTipo" class="control-label"></label>
+             <select asp-for="idTipo" asp-items="@ViewBag.tiposComestibles" class="form-control" readonly></select>
+            <span asp-validation-for="idTipo" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="idProveedor" class="control-label"></label>
+                <select asp-for="idProveedor" asp-items="@ViewBag.proveedores" class="form-control" readonly></select>
+            <span asp-validation-for="idProveedor" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="control-label">Cantidad </label>
+            <input name="cantidad" class="form-control" type="number" />
+            <span class="text-danger">@ViewBag.validacion</span>
+        </div>
+
+        <div class="form-group col-md-12">
+            <input type="submit" value="Generar" class="btn btn-outline-primary" />
+            <a asp-action="crear" asp-controller="Comestible" class="btn btn-outline-warning">Comestibles</a>
+            <span class="text-danger">@ViewBag.mensaje</span>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

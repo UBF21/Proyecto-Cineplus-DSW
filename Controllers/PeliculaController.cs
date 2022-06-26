@@ -13,6 +13,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
     public class PeliculaController : Controller
     {
 
+        #region Acceso a datos
         private IPelicula repoPelicula;
         private ITipoPelicula repoTipoPelicula;
         public PeliculaController()
@@ -20,6 +21,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             repoPelicula = new PeliculaRepository();
             repoTipoPelicula = new TipoPeliculaRepository();
         }
+        #endregion
+
+        #region Acciones
 
         [HttpGet]
         public IActionResult crear()
@@ -111,5 +115,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
             ViewBag.peliculas = repoPelicula.listar();
             return View(obj);
         }
+        #endregion
     }
 }

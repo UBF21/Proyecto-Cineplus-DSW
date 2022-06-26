@@ -4,6 +4,9 @@ namespace Cineplus_DSW_Proyecto.Models
 {
     public class Proveedor
     {
+      
+        #region Atributos
+
         [Display(Name = "ID",Order = 0)]
         public int idProveedor { get; set; }
 
@@ -19,5 +22,20 @@ namespace Cineplus_DSW_Proyecto.Models
         [Required(ErrorMessage = "Campo Requerido."),MaxLength(50,ErrorMessage = "Solo admite máximo 50 caracteres.")]
         [Display(Name = "Dirección", Order = 3)]
         public string direccion { get; set; }
+        #endregion
+
+        #region Constructor
+        public Proveedor()
+        {
+        }
+
+        public Proveedor(int idProveedor, string nombre, string telefono, string direccion)
+        {
+            this.idProveedor = idProveedor;
+            this.nombre = nombre;
+            this.telefono = telefono;
+            this.direccion = direccion;
+        }
+        #endregion
     }
 }

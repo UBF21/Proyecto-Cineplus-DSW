@@ -5,6 +5,7 @@ namespace Cineplus_DSW_Proyecto.Models
 {
     public class Pelicula
     {
+        #region Atributos
 
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name ="Código",Order = 0)]
@@ -35,7 +36,9 @@ namespace Cineplus_DSW_Proyecto.Models
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Estado", Order = 5)]
         public string estado { get; set; }
+        #endregion
 
+        #region Constructor
         public Pelicula()
         {
         }
@@ -49,6 +52,8 @@ namespace Cineplus_DSW_Proyecto.Models
             this.fechaFinal = fechaFinal;
             this.estado = estado;
         }
+
+        #endregion
 
 
     }

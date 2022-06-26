@@ -9,6 +9,8 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 {
     public interface IPeliculaGraphic
     {
+        #region Metodos para Implentar
         public IEnumerable<PeliculaGraphic> peliculasDatos();
+        #endregion
     }
 }

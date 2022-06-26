@@ -57,6 +57,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "editar", new {  id=item.idComestible  },new {@class="btn btn-outline-info font-weight-bold"})
+                    @Html.ActionLink("Pedido", "pedido", new {  id=item.idComestible  },new {@class="btn btn-outline-secondary font-weight-bold"})
                 </td>
             </tr>
         }

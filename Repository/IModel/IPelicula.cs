@@ -5,6 +5,7 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 {
     public interface IPelicula
     {
+        #region Metodos para Implentar
         public IEnumerable<Pelicula> listar();
 
         public int crear(Pelicula obj);
@@ -14,5 +15,7 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
         public Pelicula obtener(string id);
 
         public bool existePelicula(string id);
+        
+        #endregion
     }
 }

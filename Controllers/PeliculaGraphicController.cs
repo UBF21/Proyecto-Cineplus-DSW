@@ -12,6 +12,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Supervisor")]
     public class PeliculaGraphicController : Controller
     {
+        #region Acceso a datos
         private IPeliculaGraphic peliculaGraphicRepo;
         private IPelicula peliculaRepo;
 
@@ -21,6 +22,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             peliculaRepo = new PeliculaRepository();
         }
 
+        #endregion
+
+        #region Acciones
         public IActionResult datos()
         {
             List<Pelicula> listado = peliculaRepo.listar().ToList();
@@ -32,5 +36,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
             List<PeliculaGraphic> listado = peliculaGraphicRepo.peliculasDatos().ToList();
             return listado;
         }
+
+        #endregion
+
     }
 }

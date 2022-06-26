@@ -137,5 +137,58 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             Comestible comestible = listar().Where((item) => item.idComestible.Equals(id)).First();
             return comestible;
         }
+
+        public bool transaccionPedido(Comestible obj, int cantidad)
+        {
+            bool respuesta = false;
+
+            SqlConnection connect = new SqlConnection(conn);
+            connect.Open();
+            SqlTransaction tr = connect.BeginTransaction(IsolationLevel.Serializable);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_agregar_pedido", connect, tr);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@cod_Com", obj.idComestible);
+                cmd.Parameters.AddWithValue("@descrip", obj.descripcion);
+                cmd.Parameters.AddWithValue("@precio", obj.precio);
+                cmd.Parameters.AddWithValue("@id_tipo", obj.idTipo);
+                cmd.Parameters.AddWithValue("@id_proveedor", obj.idProveedor);
+                cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                bool transacion1 = cmd.ExecuteNonQuery() > 0;
+
+
+
+                SqlCommand cmd2 = new SqlCommand("usp_actualizar_stockComestible", connect, tr);
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Parameters.AddWithValue("@cantidad", cantidad);
+                cmd2.Parameters.AddWithValue("@id", obj.idComestible);
+
+                bool transacion2 = cmd2.ExecuteNonQuery() > 0;
+
+                if (transacion1 == true && transacion2 == true)
+                {
+                    respuesta = true;
+                    tr.Commit();
+                }
+                else
+                {
+                    respuesta = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                tr.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                connect.Close();
+            }
+
+            return respuesta;
+        }
     }
 }

@@ -9,6 +9,9 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 {
     public interface IComestibleGraphic
     {
+        #region Metodos para Implentar
         public IEnumerable<ComestibleGraphic> comestiblesDatos();
+        
+        #endregion
     }
 }

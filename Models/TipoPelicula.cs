@@ -2,11 +2,12 @@
 {
     public class TipoPelicula
     {
-
+        #region Atributos
         public int codTipo { get; set; }
         public string descrip { get; set; }
+        #endregion
 
-
+        #region Constructor
         public TipoPelicula()
         {
         }
@@ -16,5 +17,10 @@
             this.codTipo = codTipo;
             this.descrip = descrip;
         }
+        #endregion
+
+
+
+
     }
 }

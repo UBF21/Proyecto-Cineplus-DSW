@@ -15,12 +15,17 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Administrador,Supervisor")]
     public class RPClienteController : Controller
     {
+        #region Acceso a datos
+
         private ICliente repoCliente;
         public RPClienteController()
         {
             repoCliente = new ClienteRepository();
         }
+        #endregion
 
+        #region Acciones
+        
         public IActionResult reporte(string estado)
         {
             if (string.IsNullOrEmpty(estado)) estado = string.Empty;
@@ -45,5 +50,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
                 PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
             };
         }
+        #endregion
+
     }
 }

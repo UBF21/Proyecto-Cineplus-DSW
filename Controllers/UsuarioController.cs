@@ -12,6 +12,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Administrador")]
     public class UsuarioController : Controller
     {
+        #region Acceso a datos
 
         private IUsuario repoUsuario;
         private ITipoUsuario repoTipoUsuario;
@@ -21,6 +22,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             repoUsuario = new UsuarioRepository();
             repoTipoUsuario = new TipoUsuarioRepository();
         }
+        #endregion
+
+        #region Acceso
 
         [HttpGet]
         public IActionResult crear()
@@ -106,5 +110,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
             ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion", obj.tipoUsuario);
             return View(obj);
         }
+        #endregion
     }
 }

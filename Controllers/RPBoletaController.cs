@@ -17,7 +17,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Administrador,Supervisor")]
     public class RPBoletaController : Controller
     {
-      
+        #region Acceso a datos
+
         private IBoleta repoBoleta;
         private ITipoCliente repoCliente;
         public RPBoletaController()
@@ -26,14 +27,16 @@ namespace Cineplus_DSW_Proyecto.Controllers
             repoCliente = new TipoClienteRepository();
         }
 
+        #endregion
+
+        #region Acciones
         public IActionResult reporte(int id = 0)
         {
-            TempData["id"] = id;
+            TempData["id"] = (int)id;
             ViewBag.clientes = new SelectList(repoCliente.listar(), "idCliente", "nombre",id);
             List<Boleta> listado = repoBoleta.filtrarIDCliente(id).ToList();
             return View(listado);
         }
-
         public IActionResult reportePDF()
         {
             int id = 0;
@@ -46,5 +49,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
       
             };
         }
+
+        #endregion
+
     }
 }

@@ -13,6 +13,8 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Supervisor")]
     public class UsuarioGraphicController : Controller
     {
+        #region Acceso a datos
+
         private IUsuarioGraphic usuarioGraphicRepo;
         private IUsuario usuarioRepo;
         private ITipoUsuario tipoUsuarioRepo;
@@ -23,6 +25,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             usuarioRepo = new UsuarioRepository();
             tipoUsuarioRepo = new TipoUsuarioRepository();
         }
+        #endregion
+
+        #region Acceso
         public IActionResult datos(int tipo = 0)
         {
             if (tipo != 0)
@@ -35,11 +40,12 @@ namespace Cineplus_DSW_Proyecto.Controllers
             List<Usuario> listado = usuarioRepo.listar().ToList();
             return View(listado);
         }
-
         public List<UsuarioGraphic> usuarioDatos()
         {
             List<UsuarioGraphic> listado = usuarioGraphicRepo.usuariosDatos().ToList();
             return listado;
         }
+        #endregion
+
     }
 }

@@ -14,6 +14,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
 {
     public class LoginController : Controller
     {
+        #region Acceso a datos
         private ILogin repoLogin;
         private IUsuario repoUsuario;
 
@@ -22,7 +23,9 @@ namespace Cineplus_DSW_Proyecto.Controllers
             repoLogin = new LoginRepository();
             repoUsuario = new UsuarioRepository();
         }
-        
+        #endregion
+
+        #region Acciones
         [HttpGet]
         public IActionResult login()
         {
@@ -75,5 +78,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("login");
         }
+        #endregion
     }
 }

@@ -11,12 +11,17 @@ namespace Cineplus_DSW_Proyecto.Controllers
     [Authorize(Roles = "Administrador")]
     public class ProveedorController : Controller
     {
+        #region Acceso a datos
+
         private IProveedor repoProveedor;
         public ProveedorController()
         {
             repoProveedor = new ProveedorRepository();
         }
+        #endregion
 
+        #region Acciones
+        
         [HttpGet]
         public IActionResult crear()
         {
@@ -75,5 +80,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
             ViewBag.cantidadProveedores = repoProveedor.listar().Count();
             return View(obj);
         }
+        #endregion
     }
 }
