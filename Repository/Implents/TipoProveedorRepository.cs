@@ -10,6 +10,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class TipoProveedorRepository : ITipoProveedor
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
 
         public TipoProveedorRepository()
@@ -19,6 +20,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
+
         public IEnumerable<TipoProveedor> listar()
         {
             List<TipoProveedor> lista = new List<TipoProveedor>();

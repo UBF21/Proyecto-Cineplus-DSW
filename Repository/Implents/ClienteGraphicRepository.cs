@@ -12,6 +12,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class ClienteGraphicRepository : IClienteGraphic
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
         public ClienteGraphicRepository()
         {
@@ -20,6 +21,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
         public IEnumerable<ClienteGraphic> clientesDatos()
         {
            List<ClienteGraphic> clientes = new List<ClienteGraphic>();

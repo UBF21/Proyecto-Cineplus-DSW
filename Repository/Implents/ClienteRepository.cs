@@ -12,6 +12,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class ClienteRepository : ICliente
     {
+        #region Conexion a la BD
+
         public string conn = string.Empty;
 
         public ClienteRepository()
@@ -22,6 +24,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
 
         }
+        #endregion
         public int agregar(Cliente cliente)
         {
             int resultado = 0;

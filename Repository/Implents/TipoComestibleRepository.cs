@@ -11,6 +11,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class TipoComestibleRepository : ITipoComestible
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
 
         public TipoComestibleRepository()
@@ -20,6 +21,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
+
         public IEnumerable<TipoComestible> listar()
         {
             List<TipoComestible> lista = new List<TipoComestible>();

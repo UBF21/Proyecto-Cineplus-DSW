@@ -13,6 +13,9 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class ComestibleGraphicRepository : IComestibleGraphic
     {
+
+        #region Conexion a la BD
+        
         public string conn = string.Empty;
 
         public ComestibleGraphicRepository()
@@ -23,6 +26,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
         public IEnumerable<ComestibleGraphic> comestiblesDatos()
         {
             List<ComestibleGraphic> comestibles = new List<ComestibleGraphic>();

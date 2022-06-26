@@ -12,6 +12,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class ProveedorRepository : IProveedor
     {
+
+        #region Conexion a la BD
         public string conn = string.Empty;
 
         public ProveedorRepository()
@@ -21,6 +23,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
         public int actualizar(Proveedor obj)
         {
             int resultado = 0;

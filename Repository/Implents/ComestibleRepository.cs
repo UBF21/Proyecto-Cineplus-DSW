@@ -12,6 +12,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class ComestibleRepository : IComestible
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
         public ComestibleRepository()
         {
@@ -21,6 +22,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
 
         }
+        #endregion
 
         public int actualizar(Comestible obj)
         {

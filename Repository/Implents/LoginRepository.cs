@@ -7,12 +7,16 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class LoginRepository : ILogin
     {
+        #region Acceso a datos
+
         private IUsuario repoUsuario;
 
         public LoginRepository()
         {
             repoUsuario = new UsuarioRepository();
         }
+        #endregion
+
 
         public Usuario existeUsuariObject(string email, string password)
         {

@@ -11,6 +11,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class UsuarioGraphicRepository : IUsuarioGraphic
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
         public UsuarioGraphicRepository()
         {
@@ -19,6 +20,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
         public IEnumerable<UsuarioGraphic> usuariosDatos()
         {
             List<UsuarioGraphic> usuarios = new List<UsuarioGraphic>();

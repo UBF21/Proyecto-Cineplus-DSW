@@ -10,6 +10,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class TipoPeliculaRepository : ITipoPelicula
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
 
         public TipoPeliculaRepository()
@@ -20,6 +21,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
 
         }
+        #endregion
 
         public IEnumerable<TipoPelicula> listar()
         {

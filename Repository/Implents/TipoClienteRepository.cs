@@ -10,8 +10,9 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class TipoClienteRepository : ITipoCliente
     {
-        public string conn = string.Empty;
 
+        #region Conexion a la BD
+        public string conn = string.Empty;
         public TipoClienteRepository()
         {
             var builder = new ConfigurationBuilder().SetBasePath
@@ -19,6 +20,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
+
         public IEnumerable<TipoCliente> listar()
         {
             List<TipoCliente> lista = new List<TipoCliente>();

@@ -12,6 +12,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class PeliculaGraphicRepository : IPeliculaGraphic
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
 
         public PeliculaGraphicRepository() 
@@ -21,6 +22,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
         public IEnumerable<PeliculaGraphic> peliculasDatos()
         {
             List<PeliculaGraphic> peliculas = new List<PeliculaGraphic>();

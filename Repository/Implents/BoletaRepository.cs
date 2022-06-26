@@ -11,6 +11,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class BoletaRepository : IBoleta
     {
+        #region Conexion a la BD
+
         public string conn = string.Empty;
         public BoletaRepository()
         {
@@ -19,6 +21,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
 
         public IEnumerable<Boleta> filtrarIDCliente(int id)
         {

@@ -10,6 +10,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class TipoUsuarioRepository : ITipoUsuario
     {
+
+        #region Conexion a la BD
         public string conn = string.Empty;
         public TipoUsuarioRepository()
         {
@@ -18,6 +20,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+        #endregion
 
         public IEnumerable<TipoUsuario> listar()
         {

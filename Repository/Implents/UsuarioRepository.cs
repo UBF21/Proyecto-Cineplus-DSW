@@ -12,6 +12,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 {
     public class UsuarioRepository : IUsuario
     {
+        #region Conexion a la BD
         public string conn = string.Empty;
 
         public UsuarioRepository()
@@ -21,6 +22,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             conn = builder.GetSection("ConnectionStrings:conectionCinePlus").Value;
         }
+
+        #endregion
 
         public int actualizar(Usuario obj)
         {
