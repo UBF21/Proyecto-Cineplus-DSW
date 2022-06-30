@@ -128,8 +128,6 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             Comestible obj = repoComestible.obtener(id);
             ViewBag.cantidadComestibles = repoComestible.listar().Count();
-            ViewBag.tiposComestibles = new SelectList(repoTipoComestible.listar(), "id", "descripcion", obj.idTipo);
-            ViewBag.proveedores = new SelectList(repoTipoProveedor.listar(), "id", "nombre", obj.idProveedor);
             return View(obj);
         }
 
@@ -145,6 +143,12 @@ namespace Cineplus_DSW_Proyecto.Controllers
             }
             if (obj != null && cantidad != 0)
             {
+                int idTipo = repoComestible.buscarTipoComestible(obj.descripcionComestible);
+                int idProveedor = repoComestible.buscarTipoProveedor(obj.descripcionProveedor);
+
+                obj.idTipo = idTipo;
+                obj.idProveedor = idProveedor;
+
                 respuesta = repoComestible.transaccionPedido(obj, cantidad);
 
                 if (respuesta)

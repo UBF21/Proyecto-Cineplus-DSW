@@ -24,14 +24,20 @@ namespace Cineplus_DSW_Proyecto.Models
         [Display(Name = "Stock", Order = 3)]
         public int stock { get; set; }
 
-        [Display(Name = "Tipo", Order = 4)]
+        [Display(Name = "Tipo Comestible", Order = 4)]
         public int idTipo { get; set; }
 
-        [Display(Name = "Proveedor", Order = 5)]
+        [Display(Name = "Tipo Proveedor", Order = 5)]
         public int idProveedor { get; set; }
     
         [Display(Name = "Estado", Order = 6)]
         public string estado { get; set; }
+
+        [Display(Name = "Comestible", Order = 7)]
+        public string descripcionComestible { get; set; }
+
+        [Display(Name = "Proveedor", Order = 8)]
+        public string descripcionProveedor { get; set; }
         #endregion
 
         #region Constructor

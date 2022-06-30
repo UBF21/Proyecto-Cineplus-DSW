@@ -4,7 +4,7 @@
     ViewData["Title"] = "pedido";
 }
 
-<h1 class="text-center">Generar pedido de Comestible</h1>
+<h1 class="text-center">Generar pedido de Comestible <i class="fas fa-drumstick-bite"></i></h1>
 <br />
 
 <form asp-action="pedido">
@@ -28,13 +28,13 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label asp-for="idTipo" class="control-label"></label>
-             <select asp-for="idTipo" asp-items="@ViewBag.tiposComestibles" class="form-control" readonly></select>
+            <label asp-for="descripcionComestible" class="control-label"></label>
+              <input asp-for="descripcionComestible" class="form-control" readonly />
             <span asp-validation-for="idTipo" class="text-danger"></span>
         </div>
         <div class="form-group col-md-6">
-            <label asp-for="idProveedor" class="control-label"></label>
-                <select asp-for="idProveedor" asp-items="@ViewBag.proveedores" class="form-control" readonly></select>
+            <label asp-for="descripcionProveedor" class="control-label"></label>
+                <input asp-for="descripcionProveedor" class="form-control" readonly />
             <span asp-validation-for="idProveedor" class="text-danger"></span>
         </div>
 

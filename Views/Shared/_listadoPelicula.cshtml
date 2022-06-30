@@ -15,7 +15,7 @@
                 @Html.DisplayNameFor(model => model.nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.tipoPelicula)
+                @Html.DisplayNameFor(model => model.descripcionTipo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.fechaEstreno)
@@ -41,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.nombre)
                 </td>
                 <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.tipoPelicula)
+                    @Html.DisplayFor(modelItem => item.descripcionTipo)
                 </td>
                 <td>
                     @item.fechaEstreno.ToString(string.Format("yyyy/MM/dd"))

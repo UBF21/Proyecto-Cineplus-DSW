@@ -89,12 +89,20 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             return resultado;
         }
 
+        public bool existeCliente(int id)
+        {
+            bool existe = false;
+            existe = listar().Any(item => item.id == id);
+            return existe;
+        }
+
         public bool existeEmail(string email)
         {
             bool respuesta = false;
             respuesta = listar().Any((item)=> item.email.Equals(email));
             return respuesta;
         }
+
 
         public IEnumerable<Cliente> filtrarPorEstado(string estado)
         {

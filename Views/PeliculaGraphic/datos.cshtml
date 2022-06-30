@@ -37,6 +37,20 @@
         <div class="col-12 mt-2 mb-2">
 
             <h3 class="text-center"> <span class="badge badge-dark" style="font-size:3rem;">Listado de Películas</span></h3>
+            <form asp-action="datos" asp-controller="PeliculaGraphic" method="get" class="mt-4">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-info">Consultar!</button>
+                            </span>
+                            <select name="id" asp-items="@ViewBag.peliculas" class="form-control"></select>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+
+            </form>
             <br />
         </div>
 
@@ -50,7 +64,7 @@
                         @Html.DisplayNameFor(model => model.nombre)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.tipoPelicula)
+                        @Html.DisplayNameFor(model => model.descripcionTipo)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.fechaEstreno)
@@ -74,7 +88,7 @@
                             @Html.DisplayFor(modelItem => item.nombre)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.tipoPelicula)
+                            @Html.DisplayFor(modelItem => item.descripcionTipo)
                         </td>
                         <td>
                             @item.fechaEstreno.ToString(string.Format("yyyy/MM/dd"))

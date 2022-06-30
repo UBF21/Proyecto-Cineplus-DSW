@@ -20,7 +20,7 @@ namespace Cineplus_DSW_Proyecto.Models
 
         
         [Required(ErrorMessage = "Campo Requerido")]
-        [Display(Name = "Teléfono", Order = 2),MinLength(9,ErrorMessage = "Es requerido 9 caracteres.")]
+        [Display(Name = "Teléfono", Order = 2),MinLength(9,ErrorMessage = "Solo admite 9 dígitos.")]
         public string telefono { get; set; }
 
 
@@ -49,6 +49,9 @@ namespace Cineplus_DSW_Proyecto.Models
         [Display(Name = "Estado", Order = 7)]
         public string estado { get; set; }
 
+        [Display(Name = "Tipo Usuario", Order = 8)]
+        public string descrip_tipo { get; set; }
+
         #endregion
 
         #region Constructor
@@ -56,7 +59,7 @@ namespace Cineplus_DSW_Proyecto.Models
         {
         }
 
-        public Usuario(string idUsuario, string nombre, string telefono,string direccion ,int tipoUsuario, string email, string password, string estado)
+        public Usuario(string idUsuario, string nombre, string telefono,string direccion, int tipoUsuario, string email, string password, string estado, string descrip_tipo)
         {
             this.idUsuario = idUsuario;
             this.nombre = nombre;
@@ -66,6 +69,7 @@ namespace Cineplus_DSW_Proyecto.Models
             this.email = email;
             this.password = password;
             this.estado = estado;
+            this.descrip_tipo = descrip_tipo;
         }
 
         #endregion

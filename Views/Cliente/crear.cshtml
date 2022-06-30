@@ -9,18 +9,17 @@
 
 <div class="row">
     <div class="col-3 mt-2">
-        <h2>Cliente</h2>
+        <h2>Cliente <i class="fas fa-users-cog"></i></h2>
         <hr />
         <form asp-action="crear" method="post">
             <div class="form-group">
                 <label asp-for="nombre" class="control-label"></label>
                 <input asp-for="nombre" class="form-control" placeholder="Nombre...." />
                 <span asp-validation-for="nombre" class="text-danger"></span>
-                <span class="text-danger">@ViewBag.duplicado</span>
             </div>
             <div class="form-group">
                 <label asp-for="telefono" class="control-label"></label>
-                <input asp-for="telefono" class="form-control" placeholder="Teléfono...." />
+                <input asp-for="telefono" class="form-control" placeholder="Teléfono...." type="number" />
                 <span asp-validation-for="telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,6 +31,7 @@
                 <label asp-for="email" class="control-label"></label>
                 <input asp-for="email" class="form-control" placeholder="example@gmail.com" />
                 <span asp-validation-for="email" class="text-danger"></span>
+                <span class="text-danger">@ViewBag.duplicado</span>
             </div>
             <div class="form-group">
                 <label asp-for="estado" class="control-label"></label>

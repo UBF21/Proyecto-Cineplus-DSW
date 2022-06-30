@@ -26,10 +26,19 @@ namespace Cineplus_DSW_Proyecto.Controllers
         #region Acceso
         public IActionResult reporte(int year = 0)
         {
-            TempData["year"] = year;
-            List<Boleta> listado = repoBoleta.filtrarPorFecha(year).ToList();
+            if (year == 0)
+            {
+                List<Boleta> listado = repoBoleta.listar().ToList();
+                return View(listado);
+            }
+            else
+            {
 
-            return View(listado);
+                TempData["year"] = year;
+                List<Boleta> listado = repoBoleta.filtrarPorFecha(year).ToList();
+
+                return View(listado);
+            }
         }
 
         public IActionResult reportePDF()

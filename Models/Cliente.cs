@@ -13,7 +13,7 @@ namespace Cineplus_DSW_Proyecto.Models
         public string nombre { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
-        [Display(Name = "Teléfono", Order = 2), StringLength(9, ErrorMessage = "Solo se admite 9 caracteres.")]
+        [Display(Name = "Teléfono", Order = 2), StringLength(9, ErrorMessage = "Solo se admite 9 dígitos.")]
         public string telefono { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]

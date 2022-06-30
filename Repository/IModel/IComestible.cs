@@ -16,6 +16,8 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
 
         public bool existeComestible(string id);
 
+        public int buscarTipoComestible(string comestible);
+        public int buscarTipoProveedor(string proveedor);
         public IEnumerable<Comestible> comestibleFiltro(int tipo);
 
         public bool transaccionPedido(Comestible obj, int cantidad);

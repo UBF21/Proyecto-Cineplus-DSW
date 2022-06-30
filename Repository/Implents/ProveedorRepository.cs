@@ -85,6 +85,34 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             return resultado;
         }
 
+        public int eliminar(int id)
+        {
+            int respuesta = 0;
+            SqlConnection connection = new SqlConnection(conn);
+            connection.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_eliminar_proveedor", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+
+                respuesta = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                respuesta = 0;
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+
+            }
+
+
+            return respuesta;
+        }
+
         public IEnumerable<Proveedor> listar()
         {
             List<Proveedor> lista = new List<Proveedor>();

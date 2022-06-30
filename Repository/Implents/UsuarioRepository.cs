@@ -130,6 +130,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
                 obj.email = data.GetString(5);
                 obj.password = data.GetString(6);
                 obj.estado = data.GetString(7);
+                obj.descrip_tipo = data.GetString(8);
 
                 listado.Add(obj);
             }

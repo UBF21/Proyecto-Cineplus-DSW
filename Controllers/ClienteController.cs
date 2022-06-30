@@ -37,11 +37,12 @@ namespace Cineplus_DSW_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 if (clienterepo.existeEmail(cliente.email))
                 {
                     ViewBag.clientes = clienterepo.listar();
                     ViewBag.cantidadClientes = clienterepo.listar().Count();
-                    ViewBag.duplicado = "El ID ya existe en la BD.";
+                    ViewBag.duplicado = "El Email ya existe en la BD.";
                     return View(cliente);
                 }
                 else if (cliente.estado.Equals("B"))

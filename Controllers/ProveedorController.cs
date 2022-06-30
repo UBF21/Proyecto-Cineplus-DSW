@@ -21,7 +21,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
         #endregion
 
         #region Acciones
-        
+
         [HttpGet]
         public IActionResult crear()
         {
@@ -51,7 +51,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
         public IActionResult editar(int id)
         {
             Proveedor proveedor = repoProveedor.obtener(id);
-            
+
             if (proveedor == null)
             {
                 ViewBag.proveedores = repoProveedor.listar();
@@ -65,10 +65,10 @@ namespace Cineplus_DSW_Proyecto.Controllers
         }
 
         [HttpPost]
-        public IActionResult editar(Proveedor obj) 
+        public IActionResult editar(Proveedor obj)
         {
 
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 ViewBag.proveedores = repoProveedor.listar();
                 ViewBag.cantidadProveedores = repoProveedor.listar().Count();
@@ -79,6 +79,25 @@ namespace Cineplus_DSW_Proyecto.Controllers
             ViewBag.proveedores = repoProveedor.listar();
             ViewBag.cantidadProveedores = repoProveedor.listar().Count();
             return View(obj);
+        }
+
+        [HttpGet]
+        public IActionResult eliminar(int id)
+        {
+            if (id != 0)
+            {
+                int respuesta = repoProveedor.eliminar(id);
+                if (respuesta > 0)
+                {
+                    return RedirectToAction("crear");
+
+                }
+                else 
+                { 
+                    return RedirectToAction("crear");
+                }
+            }
+            return View();
         }
         #endregion
     }

@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="col-3 mt-2">
-        <h2>Usuario</h2>
+        <h2>Usuario <i class="fas fa-users"></i></h2>
         <form asp-action="crear" asp-controller="Usuario" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="telefono" class="control-label"></label>
-                <input asp-for="telefono" class="form-control" placeholder="Teléfono...."/>
+                <input asp-for="telefono" class="form-control" placeholder="Teléfono...." type="number"/>
                 <span asp-validation-for="telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -57,6 +57,7 @@
                     <option value="I">Inactivo</option>
                 </select>
                 <span asp-validation-for="estado" class="text-danger"></span>
+                <span class="text-danger">@ViewBag.validacionCombo</span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Enviar" style="font-weight:bold;" class="btn btn-primary" />

@@ -32,21 +32,23 @@ namespace Cineplus_DSW_Proyecto.Controllers
         #region Acciones
         public IActionResult reporte(int id = 0)
         {
-            TempData["id"] = (int)id;
-            ViewBag.clientes = new SelectList(repoCliente.listar(), "idCliente", "nombre",id);
-            List<Boleta> listado = repoBoleta.filtrarIDCliente(id).ToList();
-            return View(listado);
+      
+                TempData["id"] = (int)id;
+                ViewBag.clientes = new SelectList(repoCliente.listar(), "idCliente", "nombre", id);
+                List<Boleta> listado = repoBoleta.filtrarIDCliente(id).ToList();
+                return View(listado);
+            
         }
         public IActionResult reportePDF()
         {
             int id = 0;
-             id = (int) TempData["id"];
+            id = (int)TempData["id"];
 
             List<Boleta> listado = repoBoleta.filtrarIDCliente(id).ToList();
-            return new ViewAsPdf("reportePDF", listado) 
+            return new ViewAsPdf("reportePDF", listado)
             {
                 PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape,
-      
+
             };
         }
 

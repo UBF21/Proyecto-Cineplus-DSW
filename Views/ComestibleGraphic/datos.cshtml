@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-12 mb-3">
 
-        <h1 class="text-center" style="font-size:3rem;"> <span class="badge badge-primary">Cuadro de datos de Comestibles</span></h1>
+        <h1 class="text-center" style="font-size:3rem;"> <span class="badge badge-primary">Cuadro de datos de Comestibles</span> </h1>
     </div>
 
     <div class="col-6 mt-2">
@@ -69,10 +69,10 @@
                         @Html.DisplayNameFor(model => model.stock)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.idTipo)
+                        @Html.DisplayNameFor(model => model.descripcionComestible)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.idProveedor)
+                        @Html.DisplayNameFor(model => model.descripcionProveedor)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.estado)
@@ -98,10 +98,10 @@
                             @Html.DisplayFor(modelItem => item.stock)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.idTipo)
+                            @Html.DisplayFor(modelItem => item.descripcionComestible)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.idProveedor)
+                            @Html.DisplayFor(modelItem => item.descripcionProveedor)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.estado)

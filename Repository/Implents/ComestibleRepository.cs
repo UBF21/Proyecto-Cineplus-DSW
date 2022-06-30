@@ -91,6 +91,22 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
             return resultado;
         }
 
+        public int buscarTipoComestible(string comestible)
+        {
+            int respuesta = 0;
+            Comestible obj = listar().FirstOrDefault(item => item.descripcionComestible.Equals(comestible));
+            respuesta = obj.idTipo;
+            return respuesta;
+        }
+
+        public int buscarTipoProveedor(string proveedor)
+        {
+            int respuesta = 0;
+            Comestible obj = listar().FirstOrDefault(item => item.descripcionProveedor.Equals(proveedor));
+            respuesta = obj.idProveedor;
+            return respuesta;
+        }
+
         public IEnumerable<Comestible> comestibleFiltro(int tipo)
         {
             List<Comestible> listado = new List<Comestible>();
@@ -128,6 +144,8 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
                 obj.idTipo = data.GetInt32(4);
                 obj.idProveedor = data.GetInt32(5);
                 obj.estado = data.GetString(6);
+                obj.descripcionComestible = data.GetString(7);
+                obj.descripcionProveedor = data.GetString(8);
 
                 lista.Add(obj);
             }
@@ -192,5 +210,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
 
             return respuesta;
         }
+   
+
     }
 }

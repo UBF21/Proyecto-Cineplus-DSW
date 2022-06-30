@@ -13,6 +13,8 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
         public int agregar(Proveedor obj);
 
         public int actualizar(Proveedor obj);
+
+        public int eliminar(int id);
         #endregion
     }
 }

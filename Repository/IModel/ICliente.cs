@@ -12,6 +12,8 @@ namespace Cineplus_DSW_Proyecto.Repository.IModel
         public Cliente obtener(int id);
         public IEnumerable<Cliente> filtrarPorEstado(string estado);
         public bool existeEmail(string email);
+
+        public bool existeCliente(int id);
         
         #endregion
     }

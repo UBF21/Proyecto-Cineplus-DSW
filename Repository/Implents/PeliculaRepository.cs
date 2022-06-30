@@ -110,6 +110,7 @@ namespace Cineplus_DSW_Proyecto.Repository.Implents
                 pelicula.fechaEstreno = data.GetDateTime(3);
                 pelicula.fechaFinal = data.GetDateTime(4);
                 pelicula.estado = data.GetString(5);
+                pelicula.descripcionTipo = data.GetString(6);
                 lista.Add(pelicula);
             }
             return lista;

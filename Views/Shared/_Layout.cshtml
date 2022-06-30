@@ -3,17 +3,17 @@
 @using System.Security.Principal;
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Cineplus_DSW_Proyecto</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+	integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
    
 </head>
 <body>
@@ -32,15 +32,15 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Mantenimientos</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="crear">Mantenimiento Clientes</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="crear">Mantenimiento Clientes <i class="fas fa-users-cog"></i></a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="crear">Mantenimiento Usuarios <i class="fas fa-users"></i></a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Pelicula" asp-action="crear">Mantenimiento Películas <i class="fas fa-camcorder"></i></a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pelicula" asp-action="crear">Mantenimiento Películas <i class="fas fa-film"></i></a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Comestible" asp-action="crear">Mantenimiento Comestibles <i class="far fa-burger-soda"></i></a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Comestible" asp-action="crear">Mantenimiento Comestibles <i class="fas fa-drumstick-bite"></i></a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="crear">Mantenimiento Proveedores <i class="fas fa-apple-crate"></i></a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="crear">Mantenimiento Proveedores <i class="fas fa-box"></i></a>
                                 </div>
                             </li>
                         }
@@ -50,13 +50,13 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Analisis de Datos</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="" asp-controller="ClienteGraphic" asp-action="datos">Analisis de Clientes</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ClienteGraphic" asp-action="datos">Analisis de Clientes </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="UsuarioGraphic" asp-action="datos">Analisis de Usuarios</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="UsuarioGraphic" asp-action="datos">Analisis de Usuarios </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="PeliculaGraphic" asp-action="datos">Analisis de Películas</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PeliculaGraphic" asp-action="datos">Analisis de Películas </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ComestibleGraphic" asp-action="datos">Analisis de Comestibles</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ComestibleGraphic" asp-action="datos">Analisis de Comestibles </a>
                                 </div>
                             </li>
                         }
@@ -69,11 +69,11 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Reportes</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="" asp-controller="RPCliente" asp-action="reporte">Reporte Clientes</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="RPCliente" asp-action="reporte">Reporte de Clientes <i class="fas fa-align-left"></i></a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="RPVenta" asp-action="reporte">Reporte Ventas</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="RPVenta" asp-action="reporte">Reporte de Ventas <i class="fas fa-align-left"></i></a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="RPBoleta" asp-action="reporte">Boleta</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="RPBoleta" asp-action="reporte">Reporte de Boleta <i class="fas fa-barcode"></i></a>
                                 </div>
                             </li>
                         }

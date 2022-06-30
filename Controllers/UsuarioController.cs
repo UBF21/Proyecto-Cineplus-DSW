@@ -45,7 +45,7 @@ namespace Cineplus_DSW_Proyecto.Controllers
                     ViewBag.usuarios = repoUsuario.listar();
                     ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
                     ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion", obj.tipoUsuario);
-                    ViewBag.duplicadoID = "El ID ya existe en la BD";
+                    ViewBag.duplicadoID = "El ID ya existe en la BD.";
                     return View(obj);
                 }
                 else if (repoUsuario.existeEmail(obj.email))
@@ -53,7 +53,15 @@ namespace Cineplus_DSW_Proyecto.Controllers
                     ViewBag.usuarios = repoUsuario.listar();
                     ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
                     ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion", obj.tipoUsuario);
-                    ViewBag.duplicadoEmail = "El Email ya existe en la BD";
+                    ViewBag.duplicadoEmail = "El Email ya existe en la BD.";
+                    return View(obj);
+                }
+                else if (obj.estado.Equals("B"))
+                {
+                    ViewBag.usuarios = repoUsuario.listar();
+                    ViewBag.cantidadUsuarios = repoUsuario.listar().Count();
+                    ViewBag.tipoUsuarios = new SelectList(repoTipoUsuario.listar(), "codTipoUser", "descripcion");
+                    ViewBag.validacionCombo = "Seleccione un estado.";
                     return View(obj);
                 }
                 else
