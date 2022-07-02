@@ -20,17 +20,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" placeholder="Nombre...."/>
+                <input asp-for="nombre" class="form-control" placeholder="Nombre...." />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="telefono" class="control-label"></label>
-                <input asp-for="telefono" class="form-control" placeholder="Teléfono...." type="number"/>
+                <input asp-for="telefono" class="form-control" placeholder="Teléfono...." type="number" />
                 <span asp-validation-for="telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="direccion" class="control-label"></label>
-                <input asp-for="direccion" class="form-control" placeholder="Dirección...."/>
+                <input asp-for="direccion" class="form-control" placeholder="Dirección...." />
                 <span asp-validation-for="direccion" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -40,13 +40,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="email" class="control-label"></label>
-                <input asp-for="email" class="form-control" placeholder="example@gmail.com"/>
+                <input asp-for="email" class="form-control" placeholder="example@gmail.com" />
                 <span asp-validation-for="email" class="text-danger"></span>
                 <span class="text-danger">@ViewBag.duplicadoEmail</span>
             </div>
             <div class="form-group">
                 <label asp-for="password" class="control-label"></label>
-                <input asp-for="password" class="form-control" type="password" placeholder="*******"/>
+                <input asp-for="password" class="form-control" type="password" placeholder="*******" />
                 <span asp-validation-for="password" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -66,7 +66,9 @@
     </div>
 
     <div class="col-9">
-        <h1>Mantenimiento de Usuarios <span class="badge badge-pill badge-primary">@ViewBag.cantidadUsuarios</span> </h1>
+        <h1>
+            Mantenimiento de Usuarios <span class="badge badge-pill badge-primary">@ViewBag.cantidadUsuarios</span>
+        </h1>
         @await Html.PartialAsync("_listadoUsuario",(IEnumerable<Cineplus_DSW_Proyecto.Models.Usuario>) @ViewBag.usuarios)
     </div>
 </div>

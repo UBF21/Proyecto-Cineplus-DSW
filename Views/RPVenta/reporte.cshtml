@@ -7,8 +7,12 @@
 <div class="row row align-items-center vh-500 mb-3">
 
     <div class="col-lg-7 mx-auto">
-        <div class="container" style="margin-left:200px">
-            <h1>Boleta</h1>
+        <h1 class="text-center">
+            Reporte de Ventas <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
+                <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
+            </svg>
+        </h1>
+        <div class="container" style="margin-left:142px">
 
 
             <form asp-controller="RPVenta" asp-action="reporte" method="get">
@@ -19,7 +23,7 @@
 
                             <label class="col-form-label" style="font-size:1.8rem">Año :</label>
                             <br />
-                            <input class="form-control-lg" name = "year" type="number" placeholder="Año...">
+                            <input class="form-control-lg" name="year" type="number" placeholder="Año...">
 
                         </div>
                     </div>
@@ -41,62 +45,66 @@
 @if (@Model.Count() != 0)
 {
     <table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.codBoleta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idCliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fechaBoleta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.precioTotal)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            double precio = item.precioTotal;
-            string precioFormato = string.Format("{0:C}", precio);
-
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.codBoleta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idCliente)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.email)
-                </td>
-                <td>
-                    @item.fechaBoleta.ToString(string.Format("yyyy/MM/dd"))
-                </td>
-                <td>
-                   @precioFormato
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.codBoleta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.idCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechaBoleta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.precioTotal)
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                double precio = item.precioTotal;
+                string precioFormato = string.Format("{0:C}", precio);
 
-   <div class="row">
-        <div class="col-3" style="margin-left:950px">
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.codBoleta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @item.fechaBoleta.ToString(string.Format("yyyy/MM/dd"))
+                    </td>
+                    <td>
+                        @precioFormato
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-            <a asp-controller="RPVenta" asp-action="reportePDF" target="_blank" class="btn btn-outline-secondary btn-lg font-weight-bold">Exportar PDF</a>
+    <div class="row">
+        <div class="col-3" style="margin-left:925px">
+
+            <a asp-controller="RPVenta" asp-action="reportePDF" target="_blank" class="btn btn-outline-secondary btn-lg font-weight-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z" />
+                </svg>  Exportar PDF
+            </a>
         </div>
     </div>
 }
